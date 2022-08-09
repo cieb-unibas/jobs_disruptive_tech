@@ -1,4 +1,7 @@
-source("jpod_bloom/dataget.R")
+# for cluster: set working directory to repository directory
+# setwd("/scicore/home/weder/nigmat01/jobs_disruptive_tech/")
+
+source("dataget.R")
 
 #### load packages
 package_setup(packages = c("RSQLite", "DBI", "tidyverse"))
@@ -86,6 +89,6 @@ print(paste("Total number of unique postings matched to technology fields from B
       length(unique(res$uniq_id))))
 
 #### save:
-write.csv(x = res, file = "jpod_bloom/jpod_bloom.csv", row.names = FALSE)
+write.csv(x = res, file = "jpod_bloom.csv", row.names = FALSE)
 
 
