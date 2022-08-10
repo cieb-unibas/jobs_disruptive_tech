@@ -43,15 +43,14 @@ bloom_tech_names <- c("3d printing",
                       "Wireless charging")
 bloom_tech_keywords <- bloom_tech_keywords %>% 
   merge(data.frame(id = seq(1, 29, 1), tech_field = bloom_tech_names), by = "id") %>%
-  mutate(key_word, key_word = str_replace_all(key_word, "\\s+", " ")) %>% 
-  mutate(key_word = tolower(key_word))
+  mutate(key_word = tolower(str_replace_all(key_word, "\\s+", " ")))
 
-#### connect do JPOD
+#### Connect do JPOD
 DB_DIR <- "/scicore/home/weder/GROUP/Innovation/05_job_adds_data/jpod.db"
 JPOD_CONN <- dbConnect(RSQLite::SQLite(), DB_DIR)
 if(exists("JPOD_CONN")){print("Connection to JPOD successfull")}
 
-#### Get jop postings that contain keywords of bloom technologies
+#### Retrieve jop postings that contain keywords of bloom technologies
 res <- lapply(
   unique(bloom_tech_keywords$tech_field), function(x){
   
@@ -80,6 +79,8 @@ res <- lapply(
 )
 
 res <- bind_rows(res) %>% na.omit()
+
+#### Summarize results
 print(paste("Total number of postings matched to technology fields from Bloom et al. (2021):", nrow(res)))
 print("Distribution by technology:")
 print(
@@ -88,7 +89,7 @@ print(
 print(paste("Total number of unique postings matched to technology fields from Bloom et al. (2021):", 
       length(unique(res$uniq_id))))
 
-#### save:
-write.csv(x = res, file = "jpod_bloom.csv", row.names = FALSE)
+#### Save results
+write.csv(x = res, file = "/scicore/home/weder/GROUP/Innovation/05_job_adds_data/jpod_bloom.csv", row.names = FALSE)
 
 
