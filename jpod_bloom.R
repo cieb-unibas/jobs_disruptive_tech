@@ -48,3 +48,30 @@ plot_df <- df %>%
          n_per_tsd = share * 1000) %>%
   na.omit() %>%
   arrange(-n_per_tsd)
+
+#### Largest companies per techfield from Bloom et al. (2021):
+unique(df$bloom_field)
+FIELD = "Lithium battery"
+df %>%
+  filter(bloom_field == FIELD) %>%
+  group_by(company_name, bloom_field) %>%
+  summarise(count = n()) %>%
+  arrange(-count) %>%
+  head(25) %>%
+  View()
+
+
+#### Number of companies per techfield from Bloom et al. (2021):
+FIELD = "Cloud computing"
+n_companies <- data.frame()
+tmp <- lapply(unique(df$bloom_field), function(x){
+  tmp <- df %>%
+    filter(bloom_field == x) %>%
+    distinct(company_name) %>%
+    summarise(count = n()) %>%
+    mutate(bloom_field = x)
+  return(tmp)
+  }
+  )
+tmp <- bind_rows(tmp)
+tmp %>% arrange(-count)
