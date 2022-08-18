@@ -21,39 +21,6 @@ jpodRetrieve <- function(jpod_conn, sql_statement){
   return(df)
 }
 
-# creating a SQL-LIKE statement based on a selection of keywords:
-sql_like_statement <- function(keywords, matching_var){
-  keywords <- paste0("'%", keywords, "%'")
-  if(length(keywords) > 1){
-    like_statement <- paste(keywords, collapse = paste0(" OR ", matching_var, " LIKE "))
-    like_statement <- paste(matching_var, "LIKE", like_statement)
-  }else{
-    like_statement <- paste(matching_var, "LIKE", keywords)
-  }
-  return(like_statement)
-}
-
-# retrieving information for job postings that contain certain keywords
-keyword_jpod_query <- function(keywords, 
-                               matching_var = "job_description", 
-                               output_vars = c("uniq_id", "company_name", 
-                                               "city", "nuts_2", "nuts_3")){
-  
-  output_vars <- paste(paste0("pc.", output_vars), collapse = ", ")
-  like_statement <- sql_like_statement(keywords = keywords, matching_var = matching_var)
-  
-  jpod_query <- paste0("
-  SELECT ", output_vars, "
-  FROM (
-    SELECT *
-    FROM (
-      SELECT uniq_id, lower(", matching_var, ") as ", matching_var, "
-      FROM job_postings
-      ) jp
-    WHERE (", like_statement, ")) jp
-    LEFT JOIN position_characteristics pc ON pc.uniq_id = jp.uniq_id")
-}
-
 
 ch_total_test <- function(){
   JPOD_QUERY <- "
