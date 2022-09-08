@@ -1,18 +1,3 @@
-# loading packages:
-package_setup <- function(packages){
-  pkgs_available <- packages %in% installed.packages()
-  for(p in seq(packages)){
-    if(pkgs_available[p] == TRUE){
-      library(packages[p], character.only = TRUE)
-      print(paste("Package", packages[p], "loaded."))
-    }else{
-      install.packages(packages[p])
-      library(packages[p], character.only = TRUE)
-      print(paste("Package", packages[p], "installed and loaded."))
-      }
-  }
-}
-
 # retrieving results from JPOD:
 jpodRetrieve <- function(jpod_conn, sql_statement){
   res <- dbSendQuery(conn = jpod_conn, statement = sql_statement)
@@ -20,7 +5,6 @@ jpodRetrieve <- function(jpod_conn, sql_statement){
   dbClearResult(res)
   return(df)
 }
-
 
 ch_total_test <- function(){
   JPOD_QUERY <- "
