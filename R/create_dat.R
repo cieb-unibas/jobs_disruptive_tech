@@ -1,10 +1,9 @@
 #### load functions and packages ####
-setwd("/scicore/home/weder/nigmat01/jobs_disruptive_tech/")
+setwd("/scicore/home/weder/nigmat01/Innoscape-GitHub-Repos/jobs_disruptive_tech/")
 for(x in c("package_setup", "connect_jpod")){
   source(paste0("R/", x, ".R"))
 }
-PKGS <- c("RSQLite", "DBI", "tidyverse")
-package_setup(packages = PKGS)
+package_setup(packages = c("RSQLite", "DBI", "tidyverse"))
 
 #### Connect to JPOD and test ####
 DB_DIR <- "/scicore/home/weder/GROUP/Innovation/05_job_adds_data/jpod.db"
@@ -61,15 +60,17 @@ company_postings <- company_postings %>%
   group_by(bloom_field) %>% 
   mutate(total = sum(bloom_postings))
 
-#### Data for plotting a Swiss map
+#### Data for plotting Swiss maps
 map_df <- merge(nuts_total, nuts_bloom, by = c("nuts_2", "Grossregion"))
-ch_total <- list("CH0", NA, sum(map_df$total_postings), sum(map_df$bloom_postings))
+ch_total <- list("code" = "CH0", "Grossregion" = NA, 
+                 "total_postings" = sum(map_df$total_postings), "bloom_postings" = sum(map_df$bloom_postings))
 map_df[nrow(map_df) + 1, ] <- ch_total
 map_df <- map_df %>%
-    mutate(bloom_share = bloom_postings / total_postings) %>%
-    arrange(-bloom_share)
+    mutate(regio_bloom_share = bloom_postings / total_postings,
+           ch_bloom_share = bloom_postings / ch_total$bloom_postings) %>%
+    arrange(-regio_bloom_share)
 write.csv(map_df, "data/map_df.csv", row.names = FALSE)
-print("Data for plotting a Swiss map saved.")
+print("Data for plotting Swiss maps saved.")
 
 #### Data for plotting number of active institutions by technology:
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 

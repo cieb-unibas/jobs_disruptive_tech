@@ -3,8 +3,7 @@ setwd("/scicore/home/weder/nigmat01/jobs_disruptive_tech/")
 for(x in c("package_setup")){
   source(paste0("R/", x, ".R"))
 }        
-PKGS <- c("tidyverse", "sf", "viridis")
-package_setup(packages = PKGS)
+package_setup(packages = c("tidyverse", "sf", "viridis"))
 
 #### load data ####
 map_df <- read.csv("data/map_df.csv")
@@ -16,21 +15,36 @@ map_df <- geo %>%
   left_join(map_df, by = "nuts_2") %>%
   na.omit() 
 
-text_labels <- map_df %>% select(bloom_share) %>%
-  mutate(bloom_share = scales::percent(bloom_share, accuracy = 0.1)) %>%
-  cbind(st_coordinates(st_centroid(map_df$geometry)))
 
-#### plot ####
+#### Plot Geographical Distribution
+text_labels <- map_df %>% select(ch_bloom_share ) %>%
+  mutate(ch_bloom_share  = scales::percent(ch_bloom_share , accuracy = 0.1)) %>%
+  cbind(st_coordinates(st_centroid(map_df$geometry)))
 ggplot(data = map_df)+
-  geom_sf(aes(fill = bloom_share), alpha = 0.9) +
-  geom_text(data = text_labels, aes(x = X, y = Y, label = bloom_share), 
+  geom_sf(aes(fill = ch_bloom_share ), alpha = 0.9) +
+  geom_text(data = text_labels, aes(x = X, y = Y, label = ch_bloom_share ), 
+            size = 3, vjust = 2, hjust = -0.3) +
+  scale_fill_viridis(name="Share", option = "plasma", 
+                     begin = 0.3, end = 0.85,
+                     labels = scales::percent) +
+  theme_void()
+ggsave("img/nuts_postings_distribution.png")
+
+
+#### Plot Specialization
+text_labels <- map_df %>% select(regio_bloom_share ) %>%
+  mutate(regio_bloom_share  = scales::percent(regio_bloom_share , accuracy = 0.1)) %>%
+  cbind(st_coordinates(st_centroid(map_df$geometry)))
+ggplot(data = map_df)+
+  geom_sf(aes(fill = regio_bloom_share ), alpha = 0.9) +
+  geom_text(data = text_labels, aes(x = X, y = Y, label = regio_bloom_share ), 
             size = 3, vjust = 2, hjust = -0.3) +
   scale_fill_viridis(name="Job Postings Share", option = "plasma", 
                      begin = 0.3, end = 0.85,
                      labels = scales::percent) +
   # ggtitle("Share of Job Postings in Disruptive Technologies") +
   theme_void()
-ggsave("img/nuts_postings.png")
+ggsave("img/nuts_postings_specialization.png")
 
 
 
