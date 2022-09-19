@@ -1,0 +1,163 @@
+---
+output:
+  html_document:
+    includes:
+     after_body: "https://innoscape.de/general_stuff/footer.html"
+    title: "inventor_ethnicity"
+    self_contained: false
+    theme: null
+    css: "style.css"
+    highlight: null
+    mathjax: null
+---
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-71167447-1"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-71167447-1', { 'anonymize_ip': true });
+</script>
+
+<div class="container-fluid main-container">
+
+<meta property='og:title' content='Innoscape.ch | REPORT_TITLE'/>
+<meta property='og:image' content='https://innoscape.de/jobs_disruptive_tech/img/title_picture.jpg'/>
+<meta property='og:description' content='xxx'/>
+<meta property='og:url' content='https://innoscape.ch/en/publications/jobs_disruptive_tech'>
+</head>
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Load packages
+```
+
+<!-- START with text -->
+### **REPORT TITLE**
+
+<br>
+
+<p style="text-align: left; line-height: 100%;">
+*December 2021* by <a href="#" data-placement="bottom" data-toggle="tooltip"  data-html="true" title="<img src='https://innoscape.de/authors/mn2018.jpg'><b>Matthias Niggli</b> is a research data scientist and project collaborator. He holds a PhD from the University of Basel and has a background in economic policy from previous positions in the public sector. He has a special interest in experimenting with all kinds of machine-learning methods and is enthusiastic about discovering novel approaches to visualize data. 
+<br> 
+<a href='https://www.linkedin.com/in/matthias-niggli-b47b33119' target = “_blank”>LinkedIn</a> 
+<br>
+<a href='mailto:matthias.niggli@unibas.ch'>matthias.niggli@unibas.ch</a>">*Matthias Niggli*</a> *and* <a href="#" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<img src='https://innoscape.de/authors/Christian Rutzer_small.jpg'> <b>Christian Rutzer</b> is the operational manager of the project and chief scientist of the <a href='https://cieb.unibas.ch/en/' target = “_blank”>Center for International Economics and Business | CIEB of the University of Basel</a>. He holds a PhD in economics from the University of Basel in international trade and innovation. Christian likes to apply new methods from data science to analyze economic questions.
+<br>
+<a href='https://www.linkedin.com/in/christian-rutzer-38978392' target = “_blank”>LinkedIn</a> 
+<br>
+<a href='mailto:christian.rutzer@unibas.ch'>christian.rutzer@unibas.ch</a>">*Christian Rutzer*</a> <p align="right">
+</p>
+
+<details> 
+<summary>*About*</summary> 
+
+The analysis is part of <a href='https://innoscape.ch' target = “_blank”>Innoscape</a>. The project is conducted by the <a href='https://cieb.unibas.ch/en/' target = “_blank”>Center for International Economics and Business | CIEB of the University of Basel</a> aiming to investigate the Swiss innovation landscape from an economic perspective. 
+
+<p style="text-align: left;">
+Follow us on social media &nbsp;&nbsp;
+    <a href="https://www.linkedin.com/company/cieb-unibas" class="fa fa-linkedin" style='color:black;text-decoration: none;' target='_blank'></a>
+    &nbsp;&nbsp;
+    <a href="https://twitter.com/cieb_unibas/" class="fa fa-twitter" style='color:black;text-decoration: none;' target='_blank'></a>
+    &nbsp;&nbsp;
+    <a href="https://github.com/cieb-unibas/" class="fa fa-github" style='color:black;text-decoration: none;' target='_blank'></a>
+</p>
+</details> 
+
+<!-- TITLE PICTURE -->
+![](img/title_picture.jpg){width=100%}
+<a href="LINK TO TITLE PICTURE" target="_blank">SOURCE OF TITLE PICTURE</a>
+
+<br>
+
+<!-- TEASER ABSTRACT -->
+**ABSTRACT_TEXT**
+
+<br>
+
+<!-- INTRODUCTION -->
+INTRO TEXT
+
+
+<!-- METHODOLOGY BOX / LINK TO PAPER -->
+<details>
+  <summary>*Click here to get a more detailed description of the job postings data.*</summary>
+</details>
+
+<br>
+
+### **SUBTITLE**
+Switzerland Text
+
+<hr class="hr_red">
+#### **Figure 1: Disruptive Technologies in the Labor Market Across Swiss Regions**
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::include_graphics("img/nuts_postings_specialization.png")
+```
+<span style="font-size:0.8em">*Sources and notes: Estimated share of job postings associated with disruptive technologies from Bloom et al. (2021). Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+
+<!-- HIGHLIGHT -->
+<div class=bloc_div>
+<blockquote>***HIGHLIGHT_TEXT***</blockquote>
+</div>
+
+<br>
+
+<hr class="hr_red">
+#### **Figure 2: Concentration of Job Postings Across Companies**
+<!-- <span style="font-size:0.8em">**Combined Prevalence of Non-Western Ethnic Origins Across Technologies**</span> -->
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::include_graphics("img/number_of_institutions.png")
+```
+<span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from Bloom et al. (2021). Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+
+<br>
+
+
+<hr class="hr_red">
+#### **Figure 3: Concentration of Job Postings Across Companies**
+<!-- <span style="font-size:0.8em">**Stocks of Immigrant Inventors Across Countries**</span> -->
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::include_graphics("img/hhi_techfield.png")
+```
+<span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from Bloom et al. (2021). Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+
+<br>
+
+<!-- TEASER OTHER OUTPUTS -->
+
+<br>
+
+
+<hr class="hr_red">
+<p style="text-align: left; line-height: 150%;">
+#### **Did you like this article?**
+Share it with your friends and colleagues on Social Media
+
+<a href='https://twitter.com/cieb_unibas/status/1472942555713126403' class="fa fa-twitter" style='color:black;text-decoration: none; font-size:28px;' target='_blank'></a> 
+ &nbsp; &nbsp; 
+ <a href='https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/feed/update/urn:li:activity:6878708066284662784/' class="fa fa-linkedin" style='color:black;text-decoration: none; font-size:28px;' target='_blank'></a> 
+ </p>
+
+<br class='br_mobile'>
+
+<div>
+<iframe id="slider" width=100%" height="400" scrolling="no" frameBorder="0" style="overflow: hidden" src="https://innoscape.de/general_stuff/teaser/ethn_teaser.html">
+</iframe>
+</div>
+
+<br class='br_desktop'>
+
+<!-- FINAL REMARKS -->
+<br class='br_desktop'>
+<span style="font-size:0.8em">*This article was written using <a href = https://rmarkdown.rstudio.com/ target = “_blank”>R Markdown</a> and <a href=https://plotly.com/javascript/ target = “_blank”>Plotly.js</a>. Computations to generate the data were performed at <a href = http://scicore.unibas.ch/ target = “_blank”> sciCORE </a> scientific computing center at the University of Basel. We thank Monty Sufrin for excellent proof-reading.*</span>
+
+<br>
+
+<!-- SOCIAL MEDIA CHANNELS -->
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
