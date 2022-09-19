@@ -3,7 +3,7 @@ setwd("/scicore/home/weder/nigmat01/Innoscape-GitHub-Repos/jobs_disruptive_tech/
 for(x in c("package_setup", "connect_jpod")){
   source(paste0("R/", x, ".R"))
 }
-package_setup(packages = c("RSQLite", "DBI", "tidyverse"))
+package_setup(packages = c("RSQLite", "DBI", "tidyverse", "viridis", "REAT"))
 
 #### Connect to JPOD and test ####
 DB_DIR <- "/scicore/home/weder/GROUP/Innovation/05_job_adds_data/jpod.db"
@@ -60,7 +60,7 @@ company_postings <- company_postings %>%
   group_by(bloom_field) %>% 
   mutate(total = sum(bloom_postings))
 
-#### Data for plotting Swiss maps
+#### (A) Data for plotting Swiss maps
 map_df <- merge(nuts_total, nuts_bloom, by = c("nuts_2", "Grossregion"))
 ch_total <- list("code" = "CH0", "Grossregion" = NA, 
                  "total_postings" = sum(map_df$total_postings), "bloom_postings" = sum(map_df$bloom_postings))
@@ -72,7 +72,7 @@ map_df <- map_df %>%
 write.csv(map_df, "data/map_df.csv", row.names = FALSE)
 print("Data for plotting Swiss maps saved.")
 
-#### Data for plotting number of active institutions by technology:
+#### (B) Data for plotting number of active institutions by technology:
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 
               "adecco", "randstad", "michael page",
               "digital minds", "personal sigma")
@@ -81,47 +81,46 @@ plot_df <- company_postings %>%
   group_by(bloom_field) %>% summarise(n_institutions = n())
 write.csv(plot_df, "data/plot2_df.csv", row.names = FALSE)
 print("Data for plotting the number of active institutions by technology saved.")
-# ggplot(data = plot_df, aes(y = n_institutions, x = reorder(bloom_field, desc(n_institutions))))+
+# plot_df <- read.csv("data/plot2_df.csv")
+# ggplot(data = plot_df, 
+#        aes(y = n_institutions, x = reorder(bloom_field, desc(n_institutions)), 
+#            fill = log(n_institutions)))+
+#   scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
 #   geom_col(position = "dodge") +
 #   labs(y = "Number of Institutions",
 #        x ="Technology Field") +
 #   theme(axis.text.x = element_text(angle = 45, hjust = 1),
+#         legend.position = "",
 #         panel.background = element_blank(),
 #         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
 #         axis.line = element_line(),
 #         axis.title = element_text(face="bold",size=10))
 # ggsave("img/number_of_institutions.png")
 
-#### Data for plotting the concentration of job postings across institutions
-FIELDS <- c("Cloud computing", "Smart devices", "Machine Learning AI", 
-            "Solar Power", "Virtual Reality", "3d printing")
+#### (C) Data for plotting the concentration of job postings across institutions
+AGENCIES <- c("rocken", "myitjob", "yellowshark", 
+              "adecco", "randstad", "michael page",
+              "digital minds", "personal sigma")
 plot_df <- company_postings %>% 
-    group_by(bloom_field) %>%
-    arrange(-bloom_postings) %>%
-    filter(!company_name %in% AGENCIES) %>%
-    mutate(
-        cum_postings = cumsum(bloom_postings),
-        cum_share = cum_postings / sum(bloom_postings),
-        n_companies = n(), 
-        company_index = seq(n_companies),
-        company_share = company_index / n_companies
-        ) %>%
-  filter(bloom_field %in% FIELDS)
-write.csv(plot_df, "data/plot3_df.csv", row.names = FALSE)
+  filter(!company_name %in% AGENCIES) %>%
+  group_by(bloom_field) %>%
+  mutate(market_share = bloom_postings / sum(bloom_postings)) %>%
+  group_by(bloom_field) %>%
+  summarise(hhi = sum(market_share^2))
+#write.csv(plot_df, "data/plot3_df.csv", row.names = FALSE)
 print("Data for plotting the concentration of job postings across institutions saved.")
+#plot_df <- read.csv("data/plot3_df.csv")
 # ggplot(data = plot_df,
-#        aes(y = cum_share, x = company_share,
-#            color = bloom_field, fill = bloom_field))+
-#     geom_line() +
-#     geom_area(alpha = 0.5) +
-#     facet_wrap(.~bloom_field, scales = "free") +
-#     guides(color = "none", fill = "none") +
-#     scale_y_continuous(labels = scales::percent) +
-#     scale_x_continuous(labels = scales::percent) +
-#     labs(y = "Share of Postings",
-#          x ="Share of Institutions")+
-#   theme(panel.background = element_blank(),
+#        aes(y = hhi, x = reorder(bloom_field, desc(hhi)),
+#            fill = hhi))+
+#   scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
+#   geom_col(position = "dodge") +
+#   labs(y = "Herfindahl-Hirschman Coefficient ",
+#        x ="Technology Field") +
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1),
+#         legend.position = "",
+#         panel.background = element_blank(),
 #         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
 #         axis.line = element_line(),
 #         axis.title = element_text(face="bold",size=10))
-# ggsave("img/company_dist.png")
+# ggsave("img/hhi_techfield.png")
