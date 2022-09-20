@@ -3,7 +3,7 @@ output:
   html_document:
     includes:
      after_body: "https://innoscape.de/general_stuff/footer.html"
-    title: "inventor_ethnicity"
+    title: "jobs_disruptive_tech"
     self_contained: false
     theme: null
     css: "style.css"
@@ -105,7 +105,7 @@ knitr::include_graphics("img/nuts_postings_specialization.png")
 <br>
 
 <hr class="hr_red">
-#### **Figure 2: Concentration of Job Postings Across Companies**
+#### **Figure 2: Diffusion of Technologies Across Companies**
 <!-- <span style="font-size:0.8em">**Combined Prevalence of Non-Western Ethnic Origins Across Technologies**</span> -->
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("img/number_of_institutions.png")

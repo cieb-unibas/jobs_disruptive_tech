@@ -1,26 +1,18 @@
-"bloom_field","n_institutions"
-"3d printing",335
-"Autonomous Cars",142
-"Bispecific monoclonal antibody",26
-"Cloud computing",4399
-"Computer vision",522
-"Drug conjugates",54
-"Electronic gaming",71
-"Fracking",6
-"GPS",49
-"Hybrid vehicle electric car",167
-"Lithium battery",49
-"Machine Learning AI",2578
-"Millimeter wave",4
-"Mobile payment",72
-"Online streaming",718
-"Rfid tags",136
-"Search Engine",675
-"Smart devices",2641
-"Social Networking",6573
-"Software defined radio",17
-"Solar Power",744
-"Touchscreen",47
-"Virtual Reality",453
-"Wifi",510
-"Wireless charging",11
+"bloom_field","n_institutions","share_total"
+"3d printing",335,0.00435483451628838
+"Autonomous Cars",142,0.00184592985466552
+"Cloud computing",4399,0.0571848269765749
+"Computer vision",522,0.00678574214179861
+"Drug conjugates",54,0.00070197332501365
+"Electronic gaming",71,0.000922964927332761
+"Hybrid vehicle electric car",167,0.0021709175051348
+"Machine Learning AI",2578,0.0335127265163924
+"Mobile payment",72,0.000935964433351533
+"Online streaming",718,0.00933364532147778
+"Rfid tags",136,0.0017679328185529
+"Search Engine",675,0.00877466656267062
+"Smart devices",2641,0.034331695395575
+"Social Networking",6573,0.0854457530613837
+"Solar Power",744,0.00967163247796584
+"Virtual Reality",453,0.00588877622650339
+"Wifi",510,0.00662974806957336

@@ -3,7 +3,7 @@ setwd("/scicore/home/weder/nigmat01/Innoscape-GitHub-Repos/jobs_disruptive_tech/
 for(x in c("package_setup", "connect_jpod")){
   source(paste0("R/", x, ".R"))
 }
-package_setup(packages = c("RSQLite", "DBI", "tidyverse", "viridis", "REAT"))
+package_setup(packages = c("RSQLite", "DBI", "tidyverse", "viridis"))
 
 #### Connect to JPOD and test ####
 DB_DIR <- "/scicore/home/weder/GROUP/Innovation/05_job_adds_data/jpod.db"
@@ -41,7 +41,7 @@ JPOD_QUERY <- "
     "
 nuts_bloom <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERY)
 
-# Number of postings with connection to technologies from Bloom et al. (2021) per institution:
+# Companies with job postings having a connection to technologies from Bloom et al. (2021):
 JPOD_QUERY <- paste0("
     SELECT pc.company_name, bt.bloom_field, COUNT(DISTINCT(bt.uniq_id)) as bloom_postings
     FROM (
@@ -76,18 +76,26 @@ print("Data for plotting Swiss maps saved.")
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 
               "adecco", "randstad", "michael page",
               "digital minds", "personal sigma")
+n_companies <- jpodRetrieve(jpod_conn = JPOD_CONN, 
+                            sql_statement = "SELECT COUNT(*) as n_companies FROM institutions")
+n_companies <- n_companies$n_companies - length(AGENCIES)
+
 plot_df <- company_postings %>%
   filter(!company_name %in% AGENCIES) %>% # exclude agencies
-  group_by(bloom_field) %>% summarise(n_institutions = n())
-write.csv(plot_df, "data/plot2_df.csv", row.names = FALSE)
+  group_by(bloom_field) %>% 
+  summarise(n_institutions = n(),
+            share_total = n_institutions / n_companies) %>%
+  filter(n_institutions >= 50)
+#write.csv(plot_df, "data/plot2_df.csv", row.names = FALSE)
 print("Data for plotting the number of active institutions by technology saved.")
 # plot_df <- read.csv("data/plot2_df.csv")
-# ggplot(data = plot_df, 
-#        aes(y = n_institutions, x = reorder(bloom_field, desc(n_institutions)), 
-#            fill = log(n_institutions)))+
+# ggplot(data = plot_df,
+#        aes(y = share_total, x = reorder(bloom_field, desc(share_total)),
+#            fill = log(share_total)))+
 #   scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
+#   scale_y_continuous(labels = scales::percent) +
 #   geom_col(position = "dodge") +
-#   labs(y = "Number of Institutions",
+#   labs(y = "Share of Institutions\n Mentioning the Technology",
 #        x ="Technology Field") +
 #   theme(axis.text.x = element_text(angle = 45, hjust = 1),
 #         legend.position = "",
@@ -95,7 +103,7 @@ print("Data for plotting the number of active institutions by technology saved."
 #         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
 #         axis.line = element_line(),
 #         axis.title = element_text(face="bold",size=10))
-# ggsave("img/number_of_institutions.png")
+#ggsave("img/share_institutions_tech.png")
 
 #### (C) Data for plotting the concentration of job postings across institutions
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 
@@ -106,7 +114,9 @@ plot_df <- company_postings %>%
   group_by(bloom_field) %>%
   mutate(market_share = bloom_postings / sum(bloom_postings)) %>%
   group_by(bloom_field) %>%
-  summarise(hhi = sum(market_share^2))
+  summarise(hhi = sum(market_share^2), share_total = n() / n_companies) %>%
+  arrange(-share_total) %>%
+  head(10) # only top-ten
 #write.csv(plot_df, "data/plot3_df.csv", row.names = FALSE)
 print("Data for plotting the concentration of job postings across institutions saved.")
 #plot_df <- read.csv("data/plot3_df.csv")
@@ -123,4 +133,4 @@ print("Data for plotting the concentration of job postings across institutions s
 #         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
 #         axis.line = element_line(),
 #         axis.title = element_text(face="bold",size=10))
-# ggsave("img/hhi_techfield.png")
+#ggsave("img/hhi_techfield.png")
