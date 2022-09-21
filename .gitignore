@@ -37,3 +37,7 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# temporary files created by knitr
+report_main.html
+report_main_files/
