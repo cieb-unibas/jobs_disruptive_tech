@@ -34,12 +34,12 @@ output:
 ```
 
 <!-- START with text -->
-### **REPORT TITLE**
+### **Trickling Down: The Spread of Disruptive Technologies in the Swiss Labor Market**
 
 <br>
 
 <p style="text-align: left; line-height: 100%;">
-*December 2021* by <a href="#" data-placement="bottom" data-toggle="tooltip"  data-html="true" title="<img src='https://innoscape.de/authors/mn2018.jpg'><b>Matthias Niggli</b> is a research data scientist and project collaborator. He holds a PhD from the University of Basel and has a background in economic policy from previous positions in the public sector. He has a special interest in experimenting with all kinds of machine-learning methods and is enthusiastic about discovering novel approaches to visualize data. 
+*October 2022* by <a href="#" data-placement="bottom" data-toggle="tooltip"  data-html="true" title="<img src='https://innoscape.de/authors/mn2018.jpg'><b>Matthias Niggli</b> is a research data scientist and project collaborator. He holds a PhD from the University of Basel and has a background in economic policy from previous positions in the public sector. He has a special interest in experimenting with all kinds of machine-learning methods and is enthusiastic about discovering novel approaches to visualize data. 
 <br> 
 <a href='https://www.linkedin.com/in/matthias-niggli-b47b33119' target = “_blank”>LinkedIn</a> 
 <br>
@@ -67,22 +67,22 @@ Follow us on social media &nbsp;&nbsp;
 
 <!-- TITLE PICTURE -->
 ![](img/title_picture.jpg){width=100%}
-<a href="LINK TO TITLE PICTURE" target="_blank">SOURCE OF TITLE PICTURE</a>
+<a href="https://unsplash.com/photos/P7saq8j11pM" target="_blank">David Ballew, Unsplash</a>
 
 <br>
 
 <!-- TEASER ABSTRACT -->
-**ABSTRACT_TEXT**
+**PLATZHALTER**
 
 <br>
 
 <!-- INTRODUCTION -->
-INTRO TEXT
-
+New ideas and technologies fuel the engine of modern economies. Some technologies, such as autonomous cars or cloud computing, are sometimes labelled as *disruptive*, since they strongly transform processes within certain industries or even affect the overall economy.
 
 <!-- METHODOLOGY BOX / LINK TO PAPER -->
 <details>
   <summary>*Click here to get a more detailed description of the job postings data.*</summary>
+  PLATZHALTER
 </details>
 
 <br>
@@ -108,7 +108,7 @@ knitr::include_graphics("img/nuts_postings_specialization.png")
 #### **Figure 2: Diffusion of Technologies Across Companies**
 <!-- <span style="font-size:0.8em">**Combined Prevalence of Non-Western Ethnic Origins Across Technologies**</span> -->
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-knitr::include_graphics("img/number_of_institutions.png")
+knitr::include_graphics("img/share_institutions_tech.png")
 ```
 <span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from Bloom et al. (2021). Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
 
