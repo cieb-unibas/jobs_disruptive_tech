@@ -85,52 +85,72 @@ plot_df <- company_postings %>%
   group_by(bloom_field) %>% 
   summarise(n_institutions = n(),
             share_total = n_institutions / n_companies) %>%
-  filter(n_institutions >= 50)
+  filter(n_institutions >= 50) %>% 
+  mutate(share_total_normed = share_total / mean(share_total))
 #write.csv(plot_df, "data/plot2_df.csv", row.names = FALSE)
-print("Data for plotting the number of active institutions by technology saved.")
-# plot_df <- read.csv("data/plot2_df.csv")
-# ggplot(data = plot_df,
-#        aes(y = share_total, x = reorder(bloom_field, desc(share_total)),
-#            fill = log(share_total)))+
-#   scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
-#   scale_y_continuous(labels = scales::percent) +
-#   geom_col(position = "dodge") +
-#   labs(y = "Share of Institutions\n Mentioning the Technology",
-#        x ="Technology Field") +
-#   theme(axis.text.x = element_text(angle = 45, hjust = 1),
-#         legend.position = "",
-#         panel.background = element_blank(),
-#         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
-#         axis.line = element_line(),
-#         axis.title = element_text(face="bold",size=10))
+#print("Data for plotting the number of active institutions by technology saved.")
+
+#plot_df <- read.csv("data/plot2_df.csv")
+ggplot(data = plot_df,
+       aes(y = share_total_normed, x = reorder(bloom_field, desc(share_total_normed)),
+           fill = log(share_total_normed)))+
+  scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
+  scale_y_continuous(#labels = scales::percent, 
+    breaks = c(0, 2, 4, 6)) +
+  geom_col(position = "dodge") +
+  geom_hline(yintercept = 1, color = "red", linetype = "dotted") +
+  labs(y = "Normed Share of Employers\n Mentioning a Technology\n (Avergae across technolgies = 1)",
+       x ="Technology Field") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "",
+        panel.background = element_blank(),
+        panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
+        axis.line = element_line(),
+        axis.title = element_text(face="bold",size=10))
 #ggsave("img/share_institutions_tech.png")
 
 #### (C) Data for plotting the concentration of job postings across institutions
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 
               "adecco", "randstad", "michael page",
               "digital minds", "personal sigma")
+n_companies <- jpodRetrieve(jpod_conn = JPOD_CONN, 
+                            sql_statement = "SELECT COUNT(*) as n_companies FROM institutions")
+n_companies <- n_companies$n_companies - length(AGENCIES)
+
 plot_df <- company_postings %>% 
   filter(!company_name %in% AGENCIES) %>%
   group_by(bloom_field) %>%
-  mutate(market_share = bloom_postings / sum(bloom_postings)) %>%
+  mutate(market_share = bloom_postings / sum(bloom_postings)) 
+# test:
+test_n <- plot_df %>% group_by(bloom_field) %>% summarise(test_share = sum(market_share)) %>% filter(test_share != 1) %>% nrow()
+if(test_n != 0){warning("Market shares do not add up to 1 across all technologies.")}
+plot_df <- plot_df %>%
+  mutate(market_share_sqrd = market_share^2) %>%
   group_by(bloom_field) %>%
-  summarise(hhi = sum(market_share^2), share_total = n() / n_companies) %>%
-  arrange(-share_total) %>%
-  head(10) # only top-ten
+  summarise(hhi = sum(market_share_sqrd), 
+            companies = n()) %>%
+  mutate(company_share = companies / n_companies) %>%
+  arrange(-company_share) %>%
+  head(10) %>% # only top-ten
+  mutate(hhi_normed = hhi / mean(hhi))
 #write.csv(plot_df, "data/plot3_df.csv", row.names = FALSE)
-print("Data for plotting the concentration of job postings across institutions saved.")
+#print("Data for plotting the concentration of job postings across institutions saved.")
+
 #plot_df <- read.csv("data/plot3_df.csv")
-# ggplot(data = plot_df,
-#        aes(y = hhi, x = reorder(bloom_field, desc(hhi)),
-#            fill = hhi))+
-#   scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
-#   geom_col(position = "dodge") +
-#   labs(y = "Herfindahl-Hirschman Coefficient ",
-#        x ="Technology Field") +
-#   theme(axis.text.x = element_text(angle = 45, hjust = 1),
-#         legend.position = "",
-#         panel.background = element_blank(),
-#         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
-#         axis.line = element_line(),
-#         axis.title = element_text(face="bold",size=10))
-#ggsave("img/hhi_techfield.png")
+ggplot(data = plot_df,
+       aes(y = hhi_normed, x = reorder(bloom_field, desc(-hhi_normed)),
+           fill = hhi_normed))+
+  scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(#labels = scales::percent, 
+    breaks = seq(0, 2.5, 0.5)) +
+  geom_hline(yintercept = 1, color = "red", linetype = "dotted") +
+  labs(y = "Normed Herfindahl-Hirschman Coefficient\n (Average across technologies = 1) ",
+       x ="Technology Field") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "",
+        panel.background = element_blank(),
+        panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
+        axis.line = element_line(),
+        axis.title = element_text(face="bold",size=10))
+# ggsave("img/hhi_techfield.png")
