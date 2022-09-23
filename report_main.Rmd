@@ -34,7 +34,7 @@ output:
 ```
 
 <!-- START with text -->
-### **Trickling Down: The Spread of Disruptive Technologies in the Swiss Labor Market**
+### **Spreading Out: The Adoption of Disruptive Technologies in Switzerland**
 
 <br>
 
@@ -67,40 +67,45 @@ Follow us on social media &nbsp;&nbsp;
 
 <!-- TITLE PICTURE -->
 ![](img/title_picture.jpg){width=100%}
-<a href="https://unsplash.com/photos/P7saq8j11pM" target="_blank">David Ballew, Unsplash</a>
+<a href="https://www.flickr.com/photos/genista/86283540/in/photolist-8Ce6f-83rDQo-fcSjgR-5EJjKM-hWWfrE-TjKPhm-cb5ZG-83oAxe-83oAdt-bCoZrd-8vwmtf-bUHTWa-oVv2n1-NpEk3-4T4jkd-voDbE-9TJ5RD-a4aE9c-2mjws8y-dCjqYj-eQin8e-83owXV-5zDZx8-8UvNaM-5zJrij-4T4jwE-bC15vo-6utwjq-c38qMG-SdV3BE-eQuLnJ-9Rchh3-9R9omF-9Dy2X3-Hbrxfw-en4KLF-6vGRDj-91WmfY-BYy1M-6pymgg-5a1RoJ-d2Bem-bQULmV-4SwBCP-d2BcP-7KL6W4-nE86Xx-chfar3-6vGRG7-6pykR4" target="_blank">Flickr | Kai Schreiber</a>
 
 <br>
 
 <!-- TEASER ABSTRACT -->
-**PLATZHALTER**
+**New ideas and technologies are the fuel for the engine of modern economies. Some technologies have limited impact in some particular industries of the economy. But others, such as autonomous driving or cloud computing, are sometimes labelled as *disruptive* because they strongly transform processes within entire industries or even affect the overall economy.**
 
 <br>
 
 <!-- INTRODUCTION -->
-New ideas and technologies fuel the engine of modern economies. Some technologies, such as autonomous cars or cloud computing, are sometimes labelled as *disruptive*, since they strongly transform processes within certain industries or even affect the overall economy.
+In a recent study, <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom, Hassan, Kalyani, Lerner & Tahoun (2021)</a> define a set of 29 disruptive technologies from the last 3 decades. Their findings highlight the spread of disruptive technologies and suggest that adoption and engagement at the regional level is associated with long-lasting economic benefits. Disruptive technologies gradually diffuse from pioneering regions to the rest of the country, and from high-paying occupations to lower payed ones. Yet pioneering regions obtain persistently higher numbers of high-paying jobs. 
+
+To what extent have disruptive technologies spread to Switzerland? Data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a> on over 3 million Swiss job postings over the last 2 years allows us to approach this question.  We assign job postings to disruptive technologies if their full text contains keywords as defined by Bloom et al. (2021). This provides an estimate of how prevalent these technologies have become in Switzerland.
 
 <!-- METHODOLOGY BOX / LINK TO PAPER -->
 <details>
-  <summary>*Click here to get a more detailed description of the job postings data.*</summary>
-  PLATZHALTER
+<summary>*Click here to get a more information on the data.*</summary>
+<br>
+The sample of job postings we use for this analysis is obtained from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a> and consists of over 3 million Swiss job postings published by nearly 77 thousand employers. We assign job postings to so-called *Grossregionen* (which correspond to <a href="https://ec.europa.eu/eurostat/web/regions/background" target ="blank"> Eurostat NUTS-2 regions</a>), according to information about job postings locations’ provided by JobsPickr (e.g., canton or cities). 
+
+We then check if job postings mention technological keywords defined by <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom, Hassan, Kalyani, Lerner & Tahoun (2021)</a> in their full text. To do so, we first translate all technological keywords to German, French and Italian using Google translate and look for matches with the English keywords (e.g., “additive manufactur”) or the translations (e.g, “additive fertigung”, “fabrication additive”, “produzione di additive”). If a keyword is mentioned in a particular job posting (e.g., “additive fertigung”), we assign the job posting to the corresponding technology (e.g., 3d Printing).
 </details>
 
-<br>
-
-### **SUBTITLE**
-Switzerland Text
+Overall, we find slightly over 200 thousand postings (6%) with a connection to the 29 disruptive technologies from Bloom et al. (2021) in our sample. It is noteworthy that these postings from our sample are not distributed proportionally across Swiss regions, but are geographically clustered (a substantial fraction being located in the Zurich area). This suggests that disruptive technologies are more widespread in some regions compared to others, which is clearly visible in Figure 1. 
 
 <hr class="hr_red">
-#### **Figure 1: Disruptive Technologies in the Labor Market Across Swiss Regions**
+#### **Figure 1: Spread of Disruptive Technologies Across Swiss Regions**
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("img/nuts_postings_specialization.png")
 ```
-<span style="font-size:0.8em">*Sources and notes: Estimated share of job postings associated with disruptive technologies from Bloom et al. (2021). Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+<span style="font-size:0.8em">*Sources and notes: Estimated share of job postings with a connection to disruptive technologies as defined in Bloom et al. (2021) among all job postings of a region. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
 
 <!-- HIGHLIGHT -->
 <div class=bloc_div>
-<blockquote>***HIGHLIGHT_TEXT***</blockquote>
+<blockquote>***Disruptive technologies are more widespread in some Swiss regions compared to others***</blockquote>
 </div>
+
+According to our data sample, the Zurich area has the largest share of job postings with a connection to disruptive technologies among all of its job postings across all the seven main Swiss regions.
+
 
 <br>
 
