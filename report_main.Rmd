@@ -43,11 +43,17 @@ output:
 <br> 
 <a href='https://www.linkedin.com/in/matthias-niggli-b47b33119' target = “_blank”>LinkedIn</a> 
 <br>
-<a href='mailto:matthias.niggli@unibas.ch'>matthias.niggli@unibas.ch</a>">*Matthias Niggli*</a> *and* <a href="#" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<img src='https://innoscape.de/authors/Christian Rutzer_small.jpg'> <b>Christian Rutzer</b> is the operational manager of the project and chief scientist of the <a href='https://cieb.unibas.ch/en/' target = “_blank”>Center for International Economics and Business | CIEB of the University of Basel</a>. He holds a PhD in economics from the University of Basel in international trade and innovation. Christian likes to apply new methods from data science to analyze economic questions.
+<a href='mailto:matthias.niggli@unibas.ch'>matthias.niggli@unibas.ch</a>">*Matthias Niggli*</a> *,* <a href="#" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<img src='https://innoscape.de/authors/Christian Rutzer_small.jpg'> <b>Christian Rutzer</b> is the operational manager of the project and chief scientist of the <a href='https://cieb.unibas.ch/en/' target = “_blank”>Center for International Economics and Business | CIEB of the University of Basel</a>. He holds a PhD in economics from the University of Basel in international trade and innovation. Christian likes to apply new methods from data science to analyze economic questions.
 <br>
 <a href='https://www.linkedin.com/in/christian-rutzer-38978392' target = “_blank”>LinkedIn</a> 
 <br>
-<a href='mailto:christian.rutzer@unibas.ch'>christian.rutzer@unibas.ch</a>">*Christian Rutzer*</a> <p align="right">
+<a href='mailto:christian.rutzer@unibas.ch'>christian.rutzer@unibas.ch</a>">*Christian Rutzer*</a> *and*
+<a href="#" data-placement="bottom" data-toggle="tooltip"  data-html="true" title="<img src='https://innoscape.de/authors/DF_picture.jpg'><b>Dragan Filimonovic</b> is a project collaborator and research associate at the <a href='https://cieb.unibas.ch' target = “_blank”>Center for International Economics and Business | CIEB</a>. He holds a PhD in Economics from the University of Basel and is specialized in applying methods for causal inference to evaluate public policies. Dragan is passionate about working with big data and is always in pursuit of finding creative solutions to interesting economic riddles.
+<br>
+<a href='https://www.linkedin.com/in/dragan-filimonovic-39303b47' target = “_blank”>LinkedIn</a> 
+<br>
+<a href='mailto:dragan.filimonovic@unibas.ch'>dragan.filimonovic@unibas.ch</a>">*Dragan Filimonovic*</a> 
+<p align="right">
 </p>
 
 <details> 
@@ -74,12 +80,10 @@ Follow us on social media &nbsp;&nbsp;
 <!-- TEASER ABSTRACT -->
 **New ideas and technologies are the fuel for the engine of modern economies. Some technologies have limited impact in some particular industries of the economy. But others, such as autonomous driving or cloud computing, are sometimes labelled as *disruptive* because they strongly transform processes within entire industries or even affect the overall economy.**
 
-<br>
-
 <!-- INTRODUCTION -->
-In a recent study, <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom, Hassan, Kalyani, Lerner & Tahoun (2021)</a> define a set of 29 disruptive technologies from the last 3 decades. Their findings highlight the spread of disruptive technologies and suggest that adoption and engagement at the regional level is associated with long-lasting economic benefits. Disruptive technologies gradually diffuse from pioneering regions to the rest of the country, and from high-paying occupations to lower payed ones. Yet pioneering regions obtain persistently higher numbers of high-paying jobs. 
+In a recent study, <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom, Hassan, Kalyani, Lerner & Tahoun (2021)</a> define a set of 29 disruptive technologies that have been strongly emerging over the last 3 decades (e.g., Wifi, Cloud Computing, Solar Power, or Artificial Intelligence). Their findings highlight how disruptive technologies gradually spread throughout the economy and the labor market. They diffuse from pioneering regions to the rest of the country, and from high-paying occupations to lower paid ones. Yet, pioneering regions obtain persistently higher numbers of high-paying jobs.
 
-To what extent have disruptive technologies spread to Switzerland? Data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a> on over 3 million Swiss job postings over the last 2 years allows us to approach this question.  We assign job postings to disruptive technologies if their full text contains keywords as defined by Bloom et al. (2021). This provides an estimate of how prevalent these technologies have become in Switzerland.
+To what extent have disruptive technologies spread to Switzerland? Data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a> on over 3 million Swiss job postings over the last 2 years allows us to approach this question.  We assign job postings to disruptive technologies if their full text contains keywords as defined by Bloom et al. (2021). This provides an estimate of how prevalent these technologies are in Switzerland.
 
 <!-- METHODOLOGY BOX / LINK TO PAPER -->
 <details>
@@ -90,24 +94,23 @@ The sample of job postings we use for this analysis is obtained from <a href="ht
 We then check if job postings mention technological keywords defined by <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom, Hassan, Kalyani, Lerner & Tahoun (2021)</a> in their full text. To do so, we first translate all technological keywords to German, French and Italian using Google translate and look for matches with the English keywords (e.g., “additive manufactur”) or the translations (e.g, “additive fertigung”, “fabrication additive”, “produzione di additive”). If a keyword is mentioned in a particular job posting (e.g., “additive fertigung”), we assign the job posting to the corresponding technology (e.g., 3d Printing).
 </details>
 
-Overall, we find slightly over 200 thousand postings (6%) with a connection to the 29 disruptive technologies from Bloom et al. (2021) in our sample. It is noteworthy that these postings from our sample are not distributed proportionally across Swiss regions, but are geographically clustered (a substantial fraction being located in the Zurich area). This suggests that disruptive technologies are more widespread in some regions compared to others, which is clearly visible in Figure 1. 
+Overall, we find slightly over 200’000 postings with a connection to the 29 disruptive technologies from Bloom et al. (2021) in our sample (i.e., around 6% of all postings). It is noteworthy that these postings are not distributed proportionally across Swiss regions in our sample, but are geographically clustered (a substantial fraction being located in the Zurich area). This suggests that disruptive technologies could be more widespread in some regions compared to others, which is clearly visible in Figure 1.
 
 <hr class="hr_red">
 #### **Figure 1: Spread of Disruptive Technologies Across Swiss Regions**
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("img/nuts_postings_specialization.png")
 ```
-<span style="font-size:0.8em">*Sources and notes: Estimated share of job postings with a connection to disruptive technologies as defined in Bloom et al. (2021) among all job postings of a region. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+<span style="font-size:0.8em">*Sources and notes: Estimated share of job postings with a connection to disruptive technologies as defined in <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a> among all job postings of a region. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
 
 <!-- HIGHLIGHT -->
 <div class=bloc_div>
-<blockquote>***Disruptive technologies are more widespread in some Swiss regions compared to others***</blockquote>
+<blockquote>***Disruptive technologies are far more widespread in some Swiss regions compared to others***</blockquote>
 </div>
 
-According to our data sample, the Zurich area has the largest share of job postings with a connection to disruptive technologies among all of its job postings across all the seven main Swiss regions.
+According to our data sample, the Zurich area has the largest share of job postings with a connection to disruptive technologies among all of its job postings. Almost 10% of the Zurich area’s postings in our sample have a connection to at least one of the 29 disruptive technologies. This share can be understood as the extent to which a region is specialized in disruptive technologies. Hence, our data suggests that the Région Lemanique lags the Zurich area, and Northwestern Switzerland, Central Switzerland or the Espace Mittelland are only around half as specialized in these technologies compared to Zurich. Overall, though, disruptive technologies seem to have spread among Swiss employers to a similar extent as Bloom et al. (2021) report for the USA.
 
-
-<br>
+However, how prevalent are specific technologies across companies and institutions in Switzerland? To approach this, we calculate for every technology the share of all institutions in our data sample that has published at least one job posting with a connection to a given technology.  Figure 2 depicts the results for the technology fields where we detected at least 50 institutions with job posting related to that technology.
 
 <hr class="hr_red">
 #### **Figure 2: Diffusion of Technologies Across Companies**
@@ -115,10 +118,11 @@ According to our data sample, the Zurich area has the largest share of job posti
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("img/share_institutions_tech.png")
 ```
-<span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from Bloom et al. (2021). Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+<span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a>. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+
+The average share across technology fields is 1.6%, but is heavily driven by the four most prevalent technologies “Machine Learning & AI”, “Smart Devices”, “Cloud Computing” and, most of all, “Social Networking”. Job postings with a connection to social networks make up over 8% of all job postings in our sample – a more than 5 times higher share compared to the average across all disruptive technologies. This likely reflects how widespread social media and professions such as social media managers have become.
 
 <br>
-
 
 <hr class="hr_red">
 #### **Figure 3: Concentration of Job Postings Across Companies**
@@ -126,7 +130,7 @@ knitr::include_graphics("img/share_institutions_tech.png")
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("img/hhi_techfield.png")
 ```
-<span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from Bloom et al. (2021). Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+<span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a>. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
 
 <br>
 
@@ -156,7 +160,7 @@ Share it with your friends and colleagues on Social Media
 
 <!-- FINAL REMARKS -->
 <br class='br_desktop'>
-<span style="font-size:0.8em">*This article was written using <a href = https://rmarkdown.rstudio.com/ target = “_blank”>R Markdown</a> and <a href=https://plotly.com/javascript/ target = “_blank”>Plotly.js</a>. Computations to generate the data were performed at <a href = http://scicore.unibas.ch/ target = “_blank”> sciCORE </a> scientific computing center at the University of Basel. We thank Monty Sufrin for excellent proof-reading.*</span>
+<span style="font-size:0.8em">*This article was written using <a href = https://rmarkdown.rstudio.com/ target = “_blank”>R Markdown</a> and the <a href = https://www.tidyverse.org/ target = “_blank”>tidyverse</a> R package collection. Computations to generate the data were performed at <a href = http://scicore.unibas.ch/ target = “_blank”> sciCORE </a> scientific computing center at the University of Basel.*</span>
 
 <br>
 
