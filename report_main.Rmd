@@ -22,9 +22,8 @@ output:
 
 <div class="container-fluid main-container">
 
-<meta property='og:title' content='Innoscape.ch | REPORT_TITLE'/>
-<meta property='og:image' content='https://innoscape.de/jobs_disruptive_tech/img/title_picture.jpg'/>
-<meta property='og:description' content='xxx'/>
+<meta property='og:title' content='Innoscape.ch | Spreading Out: The Adoption of Disruptive Technologies in Switzerland'/>
+<meta property='og:image' content='To what extent have disruptive technologies spread to Switzerland?'/>
 <meta property='og:url' content='https://innoscape.ch/en/publications/jobs_disruptive_tech'>
 </head>
 
@@ -39,11 +38,9 @@ output:
 <br>
 
 <p style="text-align: left; line-height: 100%;">
-*October 2022* by <a href="#" data-placement="bottom" data-toggle="tooltip"  data-html="true" title="<img src='https://innoscape.de/authors/mn2018.jpg'><b>Matthias Niggli</b> is a research data scientist and project collaborator. He holds a PhD from the University of Basel and has a background in economic policy from previous positions in the public sector. He has a special interest in experimenting with all kinds of machine-learning methods and is enthusiastic about discovering novel approaches to visualize data. 
-<br> 
-<a href='https://www.linkedin.com/in/matthias-niggli-b47b33119' target = “_blank”>LinkedIn</a> 
-<br>
-<a href='mailto:matthias.niggli@unibas.ch'>matthias.niggli@unibas.ch</a>">*Matthias Niggli*</a> *,* <a href="#" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<img src='https://innoscape.de/authors/Christian Rutzer_small.jpg'> <b>Christian Rutzer</b> is the operational manager of the project and chief scientist of the <a href='https://cieb.unibas.ch/en/' target = “_blank”>Center for International Economics and Business | CIEB of the University of Basel</a>. He holds a PhD in economics from the University of Basel in international trade and innovation. Christian likes to apply new methods from data science to analyze economic questions.
+*October 2022* by <a href="#" data-placement="bottom" data-toggle="tooltip"  data-html="true" title="<img src='https://innoscape.de/authors/mn2018.jpg'><b>Matthias Niggli</b> is a research data scientist and project collaborator. He holds a PhD from the University of Basel and has a background in economic policy from previous positions in the public sector. He has a special interest in experimenting with all kinds of machine-learning methods and is enthusiastic about discovering novel approaches to visualize data. <br> 
+<a href='https://www.linkedin.com/in/matthias-niggli-b47b33119' target = “_blank”>LinkedIn</a><br>
+<a href='mailto:matthias.niggli@unibas.ch'>matthias.niggli@unibas.ch</a>">*Matthias Niggli*</a> *,*<a href="#" data-placement="bottom" data-toggle="tooltip" data-html="true" title="<img src='https://innoscape.de/authors/Christian Rutzer_small.jpg'> <b>Christian Rutzer</b> is the operational manager of the project and chief scientist of the <a href='https://cieb.unibas.ch/en/' target = “_blank”>Center for International Economics and Business | CIEB of the University of Basel</a>. He holds a PhD in economics from the University of Basel in international trade and innovation. Christian likes to apply new methods from data science to analyze economic questions.
 <br>
 <a href='https://www.linkedin.com/in/christian-rutzer-38978392' target = “_blank”>LinkedIn</a> 
 <br>
@@ -101,7 +98,7 @@ Overall, we find slightly over 200’000 postings with a connection to the 29 di
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("img/nuts_postings_specialization.png")
 ```
-<span style="font-size:0.8em">*Sources and notes: Estimated share of job postings with a connection to disruptive technologies as defined in <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a> among all job postings of a region. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+<span style="font-size:0.8em">*Sources and notes: Estimated share of job postings with a connection to disruptive technologies as defined in <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a> among all job postings of a region. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. Data to replicate the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
 
 <!-- HIGHLIGHT -->
 <div class=bloc_div>
@@ -110,32 +107,34 @@ knitr::include_graphics("img/nuts_postings_specialization.png")
 
 According to our data sample, the Zurich area has the largest share of job postings with a connection to disruptive technologies among all of its job postings. Almost 10% of the Zurich area’s postings in our sample have a connection to at least one of the 29 disruptive technologies. This share can be understood as the extent to which a region is specialized in disruptive technologies. Hence, our data suggests that the Région Lemanique lags the Zurich area, and Northwestern Switzerland, Central Switzerland or the Espace Mittelland are only around half as specialized in these technologies compared to Zurich. Overall, though, disruptive technologies seem to have spread among Swiss employers to a similar extent as Bloom et al. (2021) report for the USA.
 
-However, how prevalent are specific technologies across companies and institutions in Switzerland? To approach this, we calculate for every technology the share of all institutions in our data sample that has published at least one job posting with a connection to a given technology.  Figure 2 depicts the results for the technology fields where we detected at least 50 institutions with job posting related to that technology.
+However, how prevalent are specific technologies across companies and institutions in Switzerland? To approach this, we calculate for every technology field the share of institutions in our data sample that has published at least one job posting with a connection to the given technology.  Figure 2 depicts the results for technology fields where we detected at least 50 institutions with job postings related to that technology.
 
 <hr class="hr_red">
-#### **Figure 2: Diffusion of Technologies Across Companies**
+#### **Figure 2: Spread of Disruptive Technologies Across Employers in Switzerland**
 <!-- <span style="font-size:0.8em">**Combined Prevalence of Non-Western Ethnic Origins Across Technologies**</span> -->
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("img/share_institutions_tech.png")
 ```
-<span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a>. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+<span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a>. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. Data to replicate the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
 
-The average share across technology fields is 1.6%, but is heavily driven by the four most prevalent technologies “Machine Learning & AI”, “Smart Devices”, “Cloud Computing” and, most of all, “Social Networking”. Job postings with a connection to social networks make up over 8% of all job postings in our sample – a more than 5 times higher share compared to the average across all disruptive technologies. This likely reflects how widespread social media and professions such as social media managers have become.
+The average share across technology fields is 1.6%, but several disruptive technologies, such as Electronic Gaming or Autonomous Cars, are only slightly represented among the companies with job postings in our sample. Hence, the average share is heavily driven by the four most prevalent technologies “Machine Learning & AI”, “Smart Devices”, “Cloud Computing” and, most of all, “Social Networking”. Job postings with a connection to social networks make up over 8% of all job postings in our sample – a more than 5 times higher share compared to the average across all disruptive technologies. This likely reflects how widespread social media and professions such as Social Media Managers have become. 
 
-<br>
+For other technologies, it is not intuitively clear how widespread they have become though. For example, Solar Power, Search Engine and Online Streaming technologies have a similar, yet below-average share of employers with job postings related to these technologies in our sample. But it could be, that some of them are much more heavily dominated by few big employers. Using the so-called <a href= https://en.wikipedia.org/wiki/Herfindahl%E2%80%93Hirschman_index target = “_blank”> Herfindahl-Hirschmann index</a> measure as a proxy, Figure 3 illustrates the concentration of job postings among employers within the ten most prevalent disruptive technologies (note that we exclude postings published by recruiting companies such as Adecco or Randstad).
 
 <hr class="hr_red">
-#### **Figure 3: Concentration of Job Postings Across Companies**
+#### **Figure 3: Concentration of Job Postings Among Employers**
 <!-- <span style="font-size:0.8em">**Stocks of Immigrant Inventors Across Countries**</span> -->
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("img/hhi_techfield.png")
 ```
-<span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a>. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. The processed data shown in the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+<span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a>. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. Data to replicate the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
 
-<br>
+As expected, technologies that are more prevalent across employers (e.g., Social Networking), are also less dominated by few big players. However, interesting differences emerge, for example, between the three aforementioned technologies Solar Power, Search Engine and Online Streaming. Whereas Online Streaming showed a similar prevalence as the other two technologies in Figure 2, its job postings are the most concentrated across all fields. Its postings are almost 5 times as concentrated among employers compared to Search Engine technologies, and about 2.5 times as concentrated compared to Solar Power. Only Virtual Reality technology shows a similarly high concentration, which is likely due to few big employers such as <a href= https://www.metacareers.com/locations/zurich/?p[offices][0]=Zurich%2C%20Switzerland&offices[0]=Zurich%2C%20Switzerland target = “_blank”> Meta</a> (see also, <a href= https://www.linkedin.com/feed/update/urn:li:activity:6945992073892270080/ target = “_blank”> this short overview</a> regarding the prospects of virtual reality in Switzerland).
+
+At the other end of the spectrum, job postings seem to be a lot more dispersed across several employers for Social Network, Cloud Computing and Machine Learning technologies. Since especially the latter two technologies are expected to further evolve and are sometimes labelled as <a href= https://en.wikipedia.org/wiki/General-purpose_technology target = “_blank”>general purpose technologies</a>, their relatively substantial spread to date can be understood as an encouraging sign for the future prospect of the Swiss economy. 
+
 
 <!-- TEASER OTHER OUTPUTS -->
-
 <br>
 
 
@@ -160,7 +159,7 @@ Share it with your friends and colleagues on Social Media
 
 <!-- FINAL REMARKS -->
 <br class='br_desktop'>
-<span style="font-size:0.8em">*This article was written using <a href = https://rmarkdown.rstudio.com/ target = “_blank”>R Markdown</a> and the <a href = https://www.tidyverse.org/ target = “_blank”>tidyverse</a> R package collection. Computations to generate the data were performed at <a href = http://scicore.unibas.ch/ target = “_blank”> sciCORE </a> scientific computing center at the University of Basel.*</span>
+<span style="font-size:0.8em">*This article was written using <a href = https://rmarkdown.rstudio.com/ target = “_blank”>R Markdown</a> and the <a href = https://www.tidyverse.org/ target = “_blank”>tidyverse</a> R package collection. Computations to generate the data were performed at <a href = http://scicore.unibas.ch/ target = “_blank”> sciCORE </a> scientific computing center at the University of Basel. Data to replicate the plots is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
 
 <br>
 
