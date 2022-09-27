@@ -1,6 +1,6 @@
-#### load functions and packages------------------------------------------------
+#### load functions, objects and packages------------------------------------------------
 #setwd("/scicore/home/weder/nigmat01/Innoscape-GitHub-Repos/jobs_disruptive_tech/")
-for(x in c("package_setup", "connect_jpod")){
+for(x in c("package_setup", "connect_jpod", "jpod_queries")){
   source(paste0("R/", x, ".R"))
 }
 package_setup(packages = c("RSQLite", "DBI", "tidyverse", "viridis"))
@@ -14,51 +14,20 @@ if(exists("JPOD_CONN")){
   }
 
 #### Extract data from JPOD:----------------------------------------------------
-# Total number of postings by NUTS-2 region
-JPOD_QUERY <- "
-    SELECT COUNT(*) as total_postings, pc.nuts_2, rg.name_en AS Grossregion
-    FROM position_characteristics pc
-    LEFT JOIN (
-        SELECT nuts_2, name_en
-        FROM regio_grid 
-        WHERE nuts_3 IS NULL AND nuts_2 IS NOT NULL
-        ) rg on pc.nuts_2 = rg.nuts_2
-    GROUP BY pc.nuts_2
-    "
-nuts_total <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERY)
+# Total number of postings by NUTS-2 region:
+nuts_total <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERIES[["total_nuts"]])
+print("Total number of postings by NUTS-2 region retrieved")
 
-# Number of postings with connection to technologies from Bloom et al. (2021) by NUTS-2 region
-JPOD_QUERY <- "
-    SELECT COUNT(DISTINCT(pc.uniq_id)) as bloom_postings, pc.nuts_2, rg.name_en as Grossregion
-    FROM position_characteristics pc 
-    LEFT JOIN (
-        SELECT nuts_2, name_en
-        FROM regio_grid 
-        WHERE nuts_3 IS NULL AND nuts_2 IS NOT NULL
-        ) rg on pc.nuts_2 = rg.nuts_2
-    WHERE pc.uniq_id IN (SELECT DISTINCT(bt.uniq_id) FROM bloom_tech bt)
-    GROUP BY rg.name_en, pc.nuts_2
-    "
-nuts_bloom <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERY)
+# Number of postings with connection to technologies from Bloom et al. (2021) by NUTS-2 region:
+nuts_bloom <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERIES[["bloom_nuts"]])
+print("Number of postings with connection to technologies from Bloom et al. (2021) by NUTS-2 region retrieved")
 
 # Companies with job postings having a connection to technologies from Bloom et al. (2021):
-JPOD_QUERY <- paste0("
-    SELECT pc.company_name, bt.bloom_field, COUNT(DISTINCT(bt.uniq_id)) as bloom_postings
-    FROM (
-        SELECT uniq_id, bloom_field
-        FROM bloom_tech
-        ) bt
-    LEFT JOIN (
-        SELECT uniq_id, company_name
-        FROM position_characteristics
-        ) pc on pc.uniq_id = bt.uniq_id
-    GROUP BY pc.company_name, bt.bloom_field
-    ORDER BY bloom_postings DESC
-    ")
-company_postings <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERY)
+company_postings <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERIES[["bloom_companies"]])
 company_postings <- company_postings %>% 
   group_by(bloom_field) %>% 
   mutate(total = sum(bloom_postings))
+print("Companies with job postings having a connection to technologies from Bloom et al. (2021) retrieved")
 
 #### (A) Data for Figure 1 -----------------------------------------------------
 map_df <- merge(nuts_total, nuts_bloom, by = c("nuts_2", "Grossregion"))
@@ -69,8 +38,8 @@ map_df <- map_df %>%
     mutate(regio_bloom_share = bloom_postings / total_postings,
            ch_bloom_share = bloom_postings / ch_total$bloom_postings) %>%
     arrange(-regio_bloom_share)
-#write.csv(map_df, "data/plot1_df.csv", row.names = FALSE)
-#print("Data for plotting Swiss maps saved.")
+write.csv(map_df, "data/plot1_df.csv", row.names = FALSE)
+print("Data Figure 1 saved.")
 
 #### (B) Data for Figure 2 -----------------------------------------------------
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 
@@ -86,8 +55,8 @@ plot_df <- company_postings %>%
             share_total = n_institutions / n_companies) %>%
   filter(n_institutions >= 50) %>% 
   mutate(share_total_normed = share_total / mean(share_total))
-#write.csv(plot_df, "data/plot2_df.csv", row.names = FALSE)
-#print("Data for plotting the number of active institutions by technology saved.")
+write.csv(plot_df, "data/plot2_df.csv", row.names = FALSE)
+print("Data for Figure 2 saved.")
 
 #### (C) Data for Figure 3 -----------------------------------------------------
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 
@@ -100,7 +69,8 @@ n_companies <- n_companies$n_companies - length(AGENCIES)
 plot_df <- company_postings %>% 
   filter(!company_name %in% AGENCIES) %>%
   group_by(bloom_field) %>%
-  mutate(market_share = bloom_postings / sum(bloom_postings)) 
+  mutate(market_share = bloom_postings / sum(bloom_postings))
+
 # test if company level market shares add up to 1:
 test_n <- plot_df %>% 
   group_by(bloom_field) %>% 
@@ -118,5 +88,5 @@ plot_df <- plot_df %>%
   arrange(-company_share) %>%
   head(10) %>% # only top-ten
   mutate(hhi_normed = hhi / mean(hhi))
-#write.csv(plot_df, "data/plot3_df.csv", row.names = FALSE)
-#print("Data for plotting the concentration of job postings across institutions saved.")
+write.csv(plot_df, "data/plot3_df.csv", row.names = FALSE)
+print("Data for Figure 3 saved.")

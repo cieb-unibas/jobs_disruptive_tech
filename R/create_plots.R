@@ -31,7 +31,7 @@ ggplot(data = map_df)+
                      labels = scales::percent) +
   theme_void() +
   theme(legend.position = "right")
-#ggsave("img/nuts_postings_specialization.png")
+ggsave("img/nuts_postings_specialization.png")
 
 # Credits to --------- 
 # https://timogrossenbacher.ch/2016/12/beautiful-thematic-maps-with-ggplot2-only/
@@ -62,7 +62,7 @@ ggplot(data = plot_df,
         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
         axis.line = element_line(),
         axis.title = element_text(face="bold",size=10))
-#ggsave("img/share_institutions_tech.png")
+ggsave("img/share_institutions_tech.png")
 
 
 #### Figure 3: Figure 3: Concentration of Job Postings Among Employers----------
@@ -88,5 +88,5 @@ ggplot(data = plot_df,
         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
         axis.line = element_line(),
         axis.title = element_text(face="bold",size=10))
-#ggsave("img/hhi_techfield.png")
+ggsave("img/hhi_techfield.png")
 
