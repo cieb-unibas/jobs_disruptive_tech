@@ -1,11 +1,11 @@
-#### load functions and packages ####
-setwd("/scicore/home/weder/nigmat01/Innoscape-GitHub-Repos/jobs_disruptive_tech/")
+#### load functions and packages------------------------------------------------
+#setwd("/scicore/home/weder/nigmat01/Innoscape-GitHub-Repos/jobs_disruptive_tech/")
 for(x in c("package_setup", "connect_jpod")){
   source(paste0("R/", x, ".R"))
 }
 package_setup(packages = c("RSQLite", "DBI", "tidyverse", "viridis"))
 
-#### Connect to JPOD and test ####
+#### Connect to JPOD and test---------------------------------------------------
 DB_DIR <- "/scicore/home/weder/GROUP/Innovation/05_job_adds_data/jpod.db"
 JPOD_CONN <- dbConnect(RSQLite::SQLite(), DB_DIR)
 if(exists("JPOD_CONN")){
@@ -13,7 +13,7 @@ if(exists("JPOD_CONN")){
   ch_total_test()
   }
 
-#### JPOD QUERIES: ####
+#### Extract data from JPOD:----------------------------------------------------
 # Total number of postings by NUTS-2 region
 JPOD_QUERY <- "
     SELECT COUNT(*) as total_postings, pc.nuts_2, rg.name_en AS Grossregion
@@ -60,7 +60,7 @@ company_postings <- company_postings %>%
   group_by(bloom_field) %>% 
   mutate(total = sum(bloom_postings))
 
-#### (A) Data for plotting Swiss maps
+#### (A) Data for Figure 1 -----------------------------------------------------
 map_df <- merge(nuts_total, nuts_bloom, by = c("nuts_2", "Grossregion"))
 ch_total <- list("code" = "CH0", "Grossregion" = NA, 
                  "total_postings" = sum(map_df$total_postings), "bloom_postings" = sum(map_df$bloom_postings))
@@ -69,17 +69,16 @@ map_df <- map_df %>%
     mutate(regio_bloom_share = bloom_postings / total_postings,
            ch_bloom_share = bloom_postings / ch_total$bloom_postings) %>%
     arrange(-regio_bloom_share)
-write.csv(map_df, "data/map_df.csv", row.names = FALSE)
-print("Data for plotting Swiss maps saved.")
+#write.csv(map_df, "data/plot1_df.csv", row.names = FALSE)
+#print("Data for plotting Swiss maps saved.")
 
-#### (B) Data for plotting number of active institutions by technology:
+#### (B) Data for Figure 2 -----------------------------------------------------
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 
               "adecco", "randstad", "michael page",
               "digital minds", "personal sigma")
 n_companies <- jpodRetrieve(jpod_conn = JPOD_CONN, 
                             sql_statement = "SELECT COUNT(*) as n_companies FROM institutions")
 n_companies <- n_companies$n_companies - length(AGENCIES) # 76'926
-
 plot_df <- company_postings %>%
   filter(!company_name %in% AGENCIES) %>% # exclude agencies
   group_by(bloom_field) %>% 
@@ -90,31 +89,7 @@ plot_df <- company_postings %>%
 #write.csv(plot_df, "data/plot2_df.csv", row.names = FALSE)
 #print("Data for plotting the number of active institutions by technology saved.")
 
-#plot_df <- read.csv("data/plot2_df.csv")
-ggplot(data = plot_df,
-       aes(y = share_total_normed, x = reorder(bloom_field, desc(-share_total_normed)),
-           fill = log(share_total_normed)))+
-  geom_col(position = "dodge") +
-  geom_hline(yintercept = 1, color = "red", linetype = "dotted") +
-  annotate(
-    geom = "text", x = 5, y = 1.15, 
-    label = paste0("Average Across Technologies"),#: ", 
-                  # round(mean(plot_df$share_total) *100, 1),"%"), 
-    color = "red", size = 3) +
-  scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
-  scale_y_continuous(#labels = scales::percent, 
-    breaks = c(0, 2, 4, 6)) +
-  labs(y = "Normed Share of Employers\n Mentioning a Technology\n (Avergae across technolgies = 1)",
-       x ="Technology Field") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        legend.position = "",
-        panel.background = element_blank(),
-        panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
-        axis.line = element_line(),
-        axis.title = element_text(face="bold",size=10))
-#ggsave("img/share_institutions_tech.png")
-
-#### (C) Data for plotting the concentration of job postings across institutions
+#### (C) Data for Figure 3 -----------------------------------------------------
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 
               "adecco", "randstad", "michael page",
               "digital minds", "personal sigma")
@@ -145,27 +120,3 @@ plot_df <- plot_df %>%
   mutate(hhi_normed = hhi / mean(hhi))
 #write.csv(plot_df, "data/plot3_df.csv", row.names = FALSE)
 #print("Data for plotting the concentration of job postings across institutions saved.")
-
-#plot_df <- read.csv("data/plot3_df.csv")
-ggplot(data = plot_df,
-       aes(y = hhi_normed, x = reorder(bloom_field, desc(-hhi_normed)),
-           fill = hhi_normed))+
-  scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
-  geom_col(position = "dodge") +
-  scale_y_continuous(#labels = scales::percent, 
-    breaks = seq(0.5, 2.5, 1)) +
-  geom_hline(yintercept = 1, color = "red", linetype = "dotted") +
-  annotate(
-    geom = "text", x = 3, y = 1.05, 
-    label = paste0("Average Across Technologies"),# (scaled HHI): "), 
-                   # round(mean(plot_df$hhi * 10000), 1)), 
-    color = "red", size = 3) +
-  labs(y = "Normed Herfindahl-Hirschman Coefficient\n (Average across technologies = 1) ",
-       x ="Technology Field") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        legend.position = "",
-        panel.background = element_blank(),
-        panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
-        axis.line = element_line(),
-        axis.title = element_text(face="bold",size=10))
-#ggsave("img/hhi_techfield.png")
