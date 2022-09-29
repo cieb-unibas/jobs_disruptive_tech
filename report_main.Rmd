@@ -6,7 +6,7 @@ output:
     title: "jobs_disruptive_tech"
     self_contained: false
     theme: null
-    css: "style.css"
+    css: "styles/css_style.css"
     highlight: null
     mathjax: null
 ---
