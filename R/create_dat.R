@@ -29,7 +29,7 @@ company_postings <- company_postings %>%
   mutate(total = sum(bloom_postings))
 print("Companies with job postings having a connection to technologies from Bloom et al. (2021) retrieved")
 
-#### (A) Data for Figure 1 -----------------------------------------------------
+#### Data for Figure 1 -----------------------------------------------------
 map_df <- merge(nuts_total, nuts_bloom, by = c("nuts_2", "Grossregion"))
 ch_total <- list("code" = "CH0", "Grossregion" = NA, 
                  "total_postings" = sum(map_df$total_postings), "bloom_postings" = sum(map_df$bloom_postings))
@@ -41,13 +41,14 @@ map_df <- map_df %>%
 write.csv(map_df, "data/plot1_df.csv", row.names = FALSE)
 print("Data Figure 1 saved.")
 
-#### (B) Data for Figure 2 -----------------------------------------------------
+#### Data for Figure 2 -----------------------------------------------------
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 
               "adecco", "randstad", "michael page",
               "digital minds", "personal sigma")
 n_companies <- jpodRetrieve(jpod_conn = JPOD_CONN, 
                             sql_statement = "SELECT COUNT(*) as n_companies FROM institutions")
 n_companies <- n_companies$n_companies - length(AGENCIES) # 76'926
+
 plot_df <- company_postings %>%
   filter(!company_name %in% AGENCIES) %>% # exclude agencies
   group_by(bloom_field) %>% 
@@ -58,7 +59,7 @@ plot_df <- company_postings %>%
 write.csv(plot_df, "data/plot2_df.csv", row.names = FALSE)
 print("Data for Figure 2 saved.")
 
-#### (C) Data for Figure 3 -----------------------------------------------------
+#### Data for Figure 3 -----------------------------------------------------
 AGENCIES <- c("rocken", "myitjob", "yellowshark", 
               "adecco", "randstad", "michael page",
               "digital minds", "personal sigma")
@@ -70,14 +71,6 @@ plot_df <- company_postings %>%
   filter(!company_name %in% AGENCIES) %>%
   group_by(bloom_field) %>%
   mutate(market_share = bloom_postings / sum(bloom_postings))
-
-# test if company level market shares add up to 1:
-test_n <- plot_df %>% 
-  group_by(bloom_field) %>% 
-  summarise(test_share = sum(market_share)) %>% 
-  filter(test_share != 1) %>% 
-  nrow()
-if(test_n != 0){warning("Market shares do not add up to 1 across all technologies.")}
 
 plot_df <- plot_df %>%
   mutate(market_share_sqrd = market_share^2) %>%

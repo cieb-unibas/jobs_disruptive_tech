@@ -31,7 +31,7 @@ ggplot(data = map_df)+
                      labels = scales::percent) +
   theme_void() +
   theme(legend.position = "right")
-ggsave("img/nuts_postings_specialization.png")
+#ggsave("img/nuts_postings_specialization.png")
 
 # Credits to --------- 
 # https://timogrossenbacher.ch/2016/12/beautiful-thematic-maps-with-ggplot2-only/
@@ -48,12 +48,9 @@ ggplot(data = plot_df,
   geom_hline(yintercept = 1, color = "red", linetype = "dotted") +
   annotate(
     geom = "text", x = 5, y = 1.15, 
-    label = paste0("Average Across Technologies"),#: ", 
-    # round(mean(plot_df$share_total) *100, 1),"%"), 
-    color = "red", size = 3) +
+    label = paste0("Average Across Technologies"), color = "red", size = 3) +
   scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
-  scale_y_continuous(#labels = scales::percent, 
-    breaks = c(0, 2, 4, 6)) +
+  scale_y_continuous(breaks = c(0, 2, 4, 6)) +
   labs(y = "Normed Share of Employers\n Mentioning a Technology\n (Avergae across technolgies = 1)",
        x ="Technology Field") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
@@ -62,7 +59,7 @@ ggplot(data = plot_df,
         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
         axis.line = element_line(),
         axis.title = element_text(face="bold",size=10))
-ggsave("img/share_institutions_tech.png")
+#ggsave("img/share_institutions_tech.png")
 
 
 #### Figure 3: Figure 3: Concentration of Job Postings Among Employers----------
@@ -72,14 +69,11 @@ ggplot(data = plot_df,
            fill = hhi_normed))+
   scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.85) +
   geom_col(position = "dodge") +
-  scale_y_continuous(#labels = scales::percent, 
-    breaks = seq(0.5, 2.5, 1)) +
+  scale_y_continuous(breaks = seq(0.5, 2.5, 1)) +
   geom_hline(yintercept = 1, color = "red", linetype = "dotted") +
   annotate(
     geom = "text", x = 3, y = 1.05, 
-    label = paste0("Average Across Technologies"),# (scaled HHI): "), 
-    # round(mean(plot_df$hhi * 10000), 1)), 
-    color = "red", size = 3) +
+    label = paste0("Average Across Technologies"), color = "red", size = 3) +
   labs(y = "Normed Herfindahl-Hirschman Coefficient\n (Average across technologies = 1) ",
        x ="Technology Field") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
@@ -88,5 +82,5 @@ ggplot(data = plot_df,
         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
         axis.line = element_line(),
         axis.title = element_text(face="bold",size=10))
-ggsave("img/hhi_techfield.png")
+#ggsave("img/hhi_techfield.png")
 

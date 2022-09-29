@@ -6,7 +6,7 @@ for(x in c("package_setup")){
 package_setup(packages = c("tidyverse"))
 
 #### Representativeness ####
-df <- read.csv("data/map_df.csv")
+df <- read.csv("data/plot1_df.csv")
 bfs <- read.csv(
   file = "/scicore/home/weder/GROUP/Innovation/05_job_adds_data/augmentation_data/ch_total_employed_people_02_2022.csv",
   sep = ";")
