@@ -1,15 +1,16 @@
 #### load functions and packages ####
-setwd("/scicore/home/weder/nigmat01/Innoscape-GitHub-Repos/jobs_disruptive_tech/")
 for(x in c("package_setup")){
   source(paste0("R/", x, ".R"))
 }        
-package_setup(packages = c("tidyverse"))
+package_setup(packages = c("dplyr"))
 
-#### Representativeness ####
-df <- read.csv("data/plot1_df.csv")
+#### Representatives ####
+# BFS employment data taken for 2Q22 from: 
+# https://www.pxweb.bfs.admin.ch/pxweb/de/px-x-0602000000_102/-/px-x-0602000000_102.px/
 bfs <- read.csv(
   file = "/scicore/home/weder/GROUP/Innovation/05_job_adds_data/augmentation_data/ch_total_employed_people_02_2022.csv",
   sep = ";")
+df <- read.csv("data/plot1_df.csv")
 df <- df %>% 
   na.omit() %>%
   mutate(ch_total_share = total_postings / df[df$nuts_2 == "CH0", ]$total_postings[2]) %>%
@@ -28,4 +29,3 @@ df
 # 5   CH03 northwestern switzerland     0.13296988     0.13513996  1.0163200
 # 6   CH06      central switzerland     0.09873514     0.11616087  1.1764896
 # 7   CH04                   zurich     0.20088068     0.28011824  1.3944508
-# => Zurich is overrepresented, Lemanique and Ticino clearly underrepresenteted

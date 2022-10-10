@@ -1,9 +1,8 @@
 #### load functions, objects and packages------------------------------------------------
-#setwd("/scicore/home/weder/nigmat01/Innoscape-GitHub-Repos/jobs_disruptive_tech/")
 for(x in c("package_setup", "connect_jpod", "jpod_queries")){
   source(paste0("R/", x, ".R"))
 }
-package_setup(packages = c("RSQLite", "DBI", "tidyverse", "viridis"))
+package_setup(packages = c("RSQLite", "DBI", "tidyverse"))
 
 #### Connect to JPOD and test---------------------------------------------------
 DB_DIR <- "/scicore/home/weder/GROUP/Innovation/05_job_adds_data/jpod.db"
