@@ -41,7 +41,7 @@ ggplot(data = plot_df,
            fill = share_total))+
   geom_col(position = "dodge") +
   scale_y_continuous(labels = scales::percent) +
-  scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.7) +
+  scale_fill_viridis(option = "plasma", direction = -1, begin = 0.3, end = 0.7) +
   labs(y = "Share of Employers\n Mentioning a Technology",
        x ="Technology Field") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
@@ -58,7 +58,7 @@ plot_df <- read.csv("data/plot3_df.csv")
 ggplot(data = plot_df,
        aes(y = hhi, x = reorder(bloom_field, desc(hhi)),
            fill = hhi))+
-  scale_fill_viridis(option = "plasma", begin = 0.3, end = 0.7) +
+  scale_fill_viridis(option = "plasma", direction = -1, begin = 0.3, end = 0.7) +
   geom_col(position = "dodge") +
   labs(y = "Herfindahl-Hirschman Coefficient",
        x ="Technology Field") +
