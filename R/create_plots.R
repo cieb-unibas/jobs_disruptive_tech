@@ -23,16 +23,16 @@ text_labels <- plot_df %>% select(regio_bloom_share ) %>%
   mutate(regio_bloom_share  = scales::percent(regio_bloom_share , accuracy = 0.1)) %>%
   cbind(st_coordinates(st_centroid(plot_df$geometry)))
 ggplot(data = plot_df)+
-  geom_sf(aes(fill = -regio_bloom_share ), alpha = 0.9) +
+  geom_sf(aes(fill = regio_bloom_share), alpha = 0.9) +
   geom_text(data = text_labels, aes(x = X, y = Y, label = regio_bloom_share ), 
             size = 3, vjust = 2, hjust = -0.3) +
   scale_fill_viridis(name=" Share of job postings\n with a connection to\n disruptive technologies", 
-                     option = "plasma", 
+                     option = "plasma", direction = -1,
                      begin = 0.3, end = 0.7,
                      labels = scales::percent) +
   theme_void() +
   theme(legend.position = "right")
-# ggsave("img/plot_1.png")
+#ggsave("img/plot_1.png")
 
 #### Figure 2: Spread of Disruptive Technologies Across Employers in CH---------
 plot_df <- read.csv("data/plot2_df.csv")
