@@ -36,3 +36,34 @@ JPOD_QUERIES["bloom_companies"] <- "
     GROUP BY pc.company_name, bt.bloom_field
     ORDER BY bloom_postings DESC
     "
+
+nuts_selected_bloom_query <- function(fields){
+    JPOD_QUERY <- paste0("
+    SELECT bt.bloom_field, COUNT(DISTINCT(bt.uniq_id)) as bloom_postings, pc.nuts_2
+    FROM (
+        SELECT uniq_id, bloom_field
+        FROM bloom_tech
+        WHERE bloom_field IN ('", paste(fields, collapse = "', '"),"')
+        ) bt
+    LEFT JOIN (
+        SELECT uniq_id, nuts_2
+        FROM position_characteristics
+        ) pc on pc.uniq_id = bt.uniq_id
+    GROUP BY pc.nuts_2, bt.bloom_field
+    HAVING nuts_2 IS NOT NULL
+    ")
+    
+    return(JPOD_QUERY)
+}
+
+top_n_field_query <- function(n = 5){
+
+    JPOD_QUERY <- paste0("
+    SELECT bt.bloom_field as field, COUNT(DISTINCT(bt.uniq_id)) AS n_postings 
+    FROM bloom_tech bt GROUP BY bloom_field
+    ORDER BY -n_postings
+    LIMIT ", n)
+    
+    return(JPOD_QUERY)
+}
+

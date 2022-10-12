@@ -18,6 +18,7 @@ plot_df <- geo %>%
   mutate(nuts_2 = paste0("CH0", seq(7))) %>%
   select(geometry, nuts_2) %>%
   left_join(plot_df, by = "nuts_2") %>%
+  filter(bloom_field == "overall") %>%
   na.omit()
 text_labels <- plot_df %>% select(regio_bloom_share ) %>%
   mutate(regio_bloom_share  = scales::percent(regio_bloom_share , accuracy = 0.1)) %>%
@@ -33,6 +34,27 @@ ggplot(data = plot_df)+
   theme_void() +
   theme(legend.position = "right")
 #ggsave("img/plot_1.png")
+
+# supplement: selected technologies:
+plot_df <- read.csv("data/plot1_df.csv") # connect to job postings data:
+plot_df <- geo %>%
+  mutate(nuts_2 = paste0("CH0", seq(7))) %>%
+  select(geometry, nuts_2) %>%
+  left_join(plot_df, by = "nuts_2") %>%
+  # filter(bloom_field != "overall")
+  filter(is.na(Grossregion) == FALSE)
+text_labels <- plot_df %>% select(regio_bloom_share ) %>%
+  mutate(regio_bloom_share  = scales::percent(regio_bloom_share , accuracy = 0.1)) %>%
+  cbind(st_coordinates(st_centroid(plot_df$geometry)))
+ggplot(data = plot_df)+
+  geom_sf(aes(fill = log(regio_bloom_share)), alpha = 0.9) +
+  facet_wrap(.~bloom_field) +
+  guides(fill = "none") +
+  scale_fill_viridis(option = "plasma", direction = -1,
+                     begin = 0.3, end = 0.7,
+                     ) +
+  theme_void()
+#ggsave("img/suppl_plt.png")
 
 #### Figure 2: Spread of Disruptive Technologies Across Employers in CH---------
 plot_df <- read.csv("data/plot2_df.csv")
