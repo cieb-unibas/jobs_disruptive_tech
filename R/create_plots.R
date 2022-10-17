@@ -5,14 +5,15 @@ for(x in c("package_setup")){
 package_setup(packages = c("tidyverse", "sf", "viridis"))
 
 #### Figure 1: Spread of Disruptive Technologies Across Swiss Regions-----------
-# Credits to --------- 
-# https://timogrossenbacher.ch/2016/12/beautiful-thematic-maps-with-ggplot2-only/
-# https://stackoverflow.com/questions/17757281/r-map-switzerland-according-to-npa-locality
-# https://tlorusso.github.io/geodata_workshop/sf_package
 # Geo information is taken from:
 # https://www.bfs.admin.ch/bfs/de/home/statistiken/regionalstatistik/kartengrundlagen/basisgeometrien.assetdetail.7546178.html
 GEO_PATH <- "/scicore/home/weder/GROUP/ch_geo/2019_THK_PRO/PRO/03_ANAL/GesamtflДche_gf/K4_greg20001205_gf/"
 geo <- st_read(paste0(GEO_PATH, "K4greg20001205gf_ch2007Poly.shp"))
+
+# Credits to --------- 
+# https://timogrossenbacher.ch/2016/12/beautiful-thematic-maps-with-ggplot2-only/
+# https://stackoverflow.com/questions/17757281/r-map-switzerland-according-to-npa-locality
+# https://tlorusso.github.io/geodata_workshop/sf_package
 plot_df <- read.csv("data/plot1_df.csv") # connect to job postings data:
 plot_df <- geo %>%
   mutate(nuts_2 = paste0("CH0", seq(7))) %>%
@@ -36,23 +37,24 @@ ggplot(data = plot_df)+
 #ggsave("img/plot_1.png")
 
 # supplement: selected technologies:
-plot_df <- read.csv("data/plot1_df.csv") # connect to job postings data:
+plot_df <- read.csv("data/plot1_df.csv")
 plot_df <- geo %>%
   mutate(nuts_2 = paste0("CH0", seq(7))) %>%
   select(geometry, nuts_2) %>%
   left_join(plot_df, by = "nuts_2") %>%
-  # filter(bloom_field != "overall")
+  filter(bloom_field != "overall") %>%
   filter(is.na(Grossregion) == FALSE)
 text_labels <- plot_df %>% select(regio_bloom_share ) %>%
   mutate(regio_bloom_share  = scales::percent(regio_bloom_share , accuracy = 0.1)) %>%
   cbind(st_coordinates(st_centroid(plot_df$geometry)))
 ggplot(data = plot_df)+
-  geom_sf(aes(fill = log(regio_bloom_share)), alpha = 0.9) +
+  geom_sf(aes(fill = regio_bloom_share), alpha = 0.9) +
   facet_wrap(.~bloom_field) +
-  guides(fill = "none") +
-  scale_fill_viridis(option = "plasma", direction = -1,
-                     begin = 0.3, end = 0.7,
-                     ) +
+  scale_fill_viridis(
+    name=" Share of job postings\n with a connection to\n a disruptive technology",
+    labels = scales::percent,
+    option = "plasma", direction = -1,
+    begin = 0.3, end = 0.7) +
   theme_void()
 #ggsave("img/suppl_plt.png")
 
