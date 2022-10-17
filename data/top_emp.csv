@@ -1,124 +1,124 @@
 "company_name","bloom_field","bloom_postings","rank","market_share"
-"sintratec ag","3d printing",220,1,0.105616898703793
-"9t labs ag","3d printing",95,2,0.0456072971675468
-"jabil","3d printing",90,3,0.043206913106097
-"sintratec","3d printing",77,4,0.0369659145463274
-"global personal partner","3d printing",72,5,0.0345655304848776
-"thyssenkrupp presta ag","Autonomous Cars",510,1,0.37117903930131
-"fixposition ag","Autonomous Cars",138,2,0.100436681222707
-"stadler rail","Autonomous Cars",66,3,0.0480349344978166
-"auterion","Autonomous Cars",63,4,0.0458515283842795
-"stadler signalling","Autonomous Cars",49,5,0.0356622998544396
-"ichnos sciences inc.","Bispecific monoclonal antibody",88,1,0.385964912280702
-"genedata","Bispecific monoclonal antibody",65,2,0.285087719298246
-"hengrui europe therapeutics ag","Bispecific monoclonal antibody",9,3,0.0394736842105263
-"abbvie","Bispecific monoclonal antibody",8,4,0.0350877192982456
-"celonic","Bispecific monoclonal antibody",7,5,0.0307017543859649
-"atos","Cloud computing",1065,1,0.0169750872662937
-"swisscom","Cloud computing",866,2,0.0138032165001036
-"huawei technologies","Cloud computing",787,3,0.0125440316230734
-"adesso schweiz ag","Cloud computing",782,4,0.0124643363776917
-"salesforce","Cloud computing",780,5,0.012432458279539
-"facebook","Computer vision",541,1,0.105334890965732
-"scandit","Computer vision",253,2,0.0492601246105919
-"coberonchronos consulting","Computer vision",230,3,0.0447819314641745
-"apple","Computer vision",158,4,0.0307632398753894
-"sony europe bv, switzerland branch","Computer vision",158,5,0.0307632398753894
-"genedata","Drug conjugates",65,1,0.147058823529412
-"lonza","Drug conjugates",65,2,0.147058823529412
-"seattle genetics","Drug conjugates",48,3,0.108597285067873
-"roche","Drug conjugates",46,4,0.104072398190045
-"pfizer","Drug conjugates",31,5,0.0701357466063348
-"amazon","Electronic gaming",347,1,0.277156549520767
-"felfel","Electronic gaming",303,2,0.242012779552716
-"gamestop","Electronic gaming",93,3,0.0742811501597444
-"urban games","Electronic gaming",77,4,0.0615015974440895
-"logitech g","Electronic gaming",40,5,0.0319488817891374
+"eth zurich","3d printing",64,1,0.0522022838499184
+"jabil","3d printing",63,2,0.0513866231647635
+"global personal partner","3d printing",39,3,0.031810766721044
+"sintratec","3d printing",37,4,0.0301794453507341
+"sintratec ag","3d printing",36,5,0.0293637846655791
+"thyssenkrupp presta ag","Autonomous Cars",470,1,0.456310679611651
+"stadler rail","Autonomous Cars",48,2,0.0466019417475728
+"nvidia","Autonomous Cars",31,3,0.0300970873786408
+"auterion","Autonomous Cars",29,4,0.0281553398058252
+"fixposition ag","Autonomous Cars",28,5,0.0271844660194175
+"ichnos sciences inc.","Bispecific monoclonal antibody",30,1,0.32258064516129
+"abbvie","Bispecific monoclonal antibody",7,2,0.0752688172043011
+"genedata","Bispecific monoclonal antibody",7,3,0.0752688172043011
+"ichnos sciences","Bispecific monoclonal antibody",5,4,0.0537634408602151
+"roche","Bispecific monoclonal antibody",5,5,0.0537634408602151
+"swisscom","Cloud computing",657,1,0.0181201390038061
+"atos","Cloud computing",431,2,0.0118870318274588
+"sap","Cloud computing",429,3,0.0118318715869601
+"mtf quadra","Cloud computing",415,4,0.0114457499034696
+"salesforce","Cloud computing",357,5,0.00984610292900877
+"facebook","Computer vision",346,1,0.120683641437042
+"scandit","Computer vision",133,2,0.0463899546564353
+"apple","Computer vision",131,3,0.045692361353331
+"advertima ag","Computer vision",70,4,0.0244157656086502
+"eth zurich","Computer vision",52,5,0.0181374258807115
+"lonza","Drug conjugates",41,1,0.187214611872146
+"blueprint medicines","Drug conjugates",20,2,0.091324200913242
+"pfizer","Drug conjugates",18,3,0.0821917808219178
+"seattle genetics","Drug conjugates",18,4,0.0821917808219178
+"roche","Drug conjugates",10,5,0.045662100456621
+"felfel","Electronic gaming",76,1,0.184019370460048
+"urban games","Electronic gaming",28,2,0.0677966101694915
+"logitech","Electronic gaming",25,3,0.0605326876513317
+"nvidia","Electronic gaming",23,4,0.0556900726392252
+"facebook","Electronic gaming",19,5,0.0460048426150121
 "epfl","Fracking",1,1,0.25
 "labor talentis","Fracking",1,2,0.25
 "manpower 18,069 bewertungen montreux, vd","Fracking",1,3,0.25
 "ok job","Fracking",1,4,0.25
-"openigo","GPS",24,1,0.151898734177215
-"unhcr","GPS",17,2,0.107594936708861
-"unops","GPS",15,3,0.0949367088607595
-"huber+suhner","GPS",13,4,0.0822784810126582
-"pearl schweiz gmbh","GPS",8,5,0.0506329113924051
-"syntegon","Hybrid vehicle electric car",361,1,0.185223191380195
-"juice technology ag","Hybrid vehicle electric car",338,2,0.173422267829656
-"green motion sa","Hybrid vehicle electric car",159,3,0.0815802975885069
-"glencore","Hybrid vehicle electric car",93,4,0.0477167778347871
-"power integrations","Hybrid vehicle electric car",91,5,0.0466906105695228
-"battrion","Lithium battery",68,1,0.18941504178273
-"battrion ag","Lithium battery",49,2,0.136490250696379
-"leclanche sa","Lithium battery",36,3,0.100278551532033
-"empa","Lithium battery",21,4,0.0584958217270195
-"belenos clean power holding ltd","Lithium battery",19,5,0.052924791086351
-"meag munich ergo assetmanagement gmbh","Machine Learning AI",646,1,0.0199376562451776
-"ubs","Machine Learning AI",590,2,0.0182093145273294
-"facebook","Machine Learning AI",493,3,0.0152155797660566
-"accenture","Machine Learning AI",476,4,0.0146909046017098
-"google","Machine Learning AI",426,5,0.0131477423536311
-"sleepiz ag","Millimeter wave",7,1,0.538461538461538
-"huawei technologies","Millimeter wave",4,2,0.307692307692308
-"huawei","Millimeter wave",1,3,0.0769230769230769
-"hubersuhner","Millimeter wave",1,4,0.0769230769230769
-"twint ag","Mobile payment",129,1,0.17817679558011
-"swiss bankers prepaid services ag","Mobile payment",111,2,0.153314917127072
-"swisscard aecs","Mobile payment",59,3,0.0814917127071823
-"3db access ag","Mobile payment",55,4,0.0759668508287293
-"hoppler consulting","Mobile payment",50,5,0.069060773480663
-"cyberunity ag","Online streaming",701,1,0.16230608937254
-"united nations","Online streaming",240,2,0.0555684186154202
-"seervision","Online streaming",127,3,0.0294049548506599
-"scandit","Online streaming",79,4,0.0182912711275758
-"paymash ag","Online streaming",70,5,0.0162074554294976
-"expleo","Rfid tags",56,1,0.0865533230293663
-"smartliberty sa","Rfid tags",44,2,0.0680061823802164
-"infomedis ag","Rfid tags",34,3,0.0525502318392581
-"spring professional","Rfid tags",33,4,0.0510046367851623
-"pebex","Rfid tags",22,5,0.0340030911901082
-"semsea suchmaschinenmarketing ag","Search Engine",114,1,0.0313703907539901
-"kayak","Search Engine",89,2,0.0244909190974133
-"uniplex ag","Search Engine",82,3,0.0225646670335718
-"matchspace music","Search Engine",80,4,0.0220143093010457
-"webhelp","Search Engine",78,5,0.0214639515685195
-"postfinance","Smart devices",526,1,0.0234622418484321
-"huawei technologies","Smart devices",525,2,0.0234176368259066
-"login berufsbildung ag","Smart devices",497,3,0.0221686961951916
-"coop","Smart devices",467,4,0.0208305455194255
-"just eat","Smart devices",356,5,0.0158793880190909
-"united nations","Social Networking",1149,1,0.0240875453344794
-"galliker transport ag","Social Networking",563,2,0.011802687574684
-"adecco staffing","Social Networking",514,3,0.0107754554411857
-"awk group","Social Networking",443,4,0.00928701704366785
-"merkle dach","Social Networking",423,5,0.00886773862183183
-"decodio ag","Software defined radio",14,1,0.254545454545455
-"gloor&lang ag","Software defined radio",9,2,0.163636363636364
-"gloor & lang","Software defined radio",8,3,0.145454545454545
-"hôpital du valais","Software defined radio",4,4,0.0727272727272727
-"coop","Software defined radio",3,5,0.0545454545454545
-"bouygues energies & services","Solar Power",464,1,0.0791133844842285
-"kollabo ag","Solar Power",164,2,0.0279624893435635
-"agrola ag","Solar Power",137,3,0.0233589087809037
-"groupe e","Solar Power",136,4,0.0231884057971014
-"elektrizitatswerke des kantons zurich","Solar Power",133,5,0.0226768968456948
-"adecco staffing","Touchscreen",12,1,0.104347826086957
-"comet group","Touchscreen",12,2,0.104347826086957
-"next link","Touchscreen",12,3,0.104347826086957
-"ok job","Touchscreen",10,4,0.0869565217391304
-"hirslanden klinik beau-site","Touchscreen",9,5,0.0782608695652174
-"facebook","Virtual Reality",543,1,0.138591117917305
-"netcetera","Virtual Reality",289,2,0.0737621235324145
-"scandit","Virtual Reality",243,3,0.0620214395099541
-"institute of machine tools and manufacturing","Virtual Reality",91,4,0.023226135783563
-"accenture","Virtual Reality",80,5,0.0204185809086268
-"bürgenstock hotels ag","Wifi",171,1,0.0601054481546573
-"regus","Wifi",120,2,0.0421792618629174
-"in lain hotel cadonau relais & châteaux (nähe st.moritz)","Wifi",67,3,0.0235500878734622
-"prätschli alpine spa hotel  arosa","Wifi",65,4,0.0228471001757469
-"varian medical systems","Wifi",63,5,0.0221441124780316
-"integrated device technology, inc.","Wireless charging",9,1,0.169811320754717
-"renesas electronics corporation","Wireless charging",9,2,0.169811320754717
-"apple","Wireless charging",8,3,0.150943396226415
-"renesas electronics","Wireless charging",8,4,0.150943396226415
-"renesas electronics europe gmbh","Wireless charging",5,5,0.0943396226415094
+"unops","GPS",15,1,0.133928571428571
+"unhcr","GPS",14,2,0.125
+"huber+suhner","GPS",7,3,0.0625
+"pearl schweiz gmbh","GPS",5,4,0.0446428571428571
+"garmin","GPS",4,5,0.0357142857142857
+"syntegon","Hybrid vehicle electric car",338,1,0.224584717607973
+"juice technology ag","Hybrid vehicle electric car",236,2,0.156810631229236
+"green motion sa","Hybrid vehicle electric car",111,3,0.0737541528239203
+"glencore","Hybrid vehicle electric car",93,4,0.0617940199335548
+"syntegon packaging systems ag","Hybrid vehicle electric car",68,5,0.0451827242524917
+"leclanche sa","Lithium battery",35,1,0.162790697674419
+"battrion","Lithium battery",27,2,0.125581395348837
+"battrion ag","Lithium battery",23,3,0.106976744186047
+"empa","Lithium battery",18,4,0.0837209302325581
+"belenos clean power holding ltd","Lithium battery",8,5,0.0372093023255814
+"eth zurich","Machine Learning AI",394,1,0.0213932779497204
+"ubs","Machine Learning AI",359,2,0.0194928598577401
+"facebook","Machine Learning AI",314,3,0.0170494651680513
+"roche","Machine Learning AI",228,4,0.012379866427757
+"apple","Machine Learning AI",227,5,0.0123255687679861
+"sleepiz ag","Millimeter wave",5,1,0.625
+"huawei","Millimeter wave",1,2,0.125
+"huawei technologies","Millimeter wave",1,3,0.125
+"hubersuhner","Millimeter wave",1,4,0.125
+"twint ag","Mobile payment",106,1,0.251781472684086
+"swiss bankers prepaid services ag","Mobile payment",95,2,0.225653206650831
+"worldline","Mobile payment",36,3,0.0855106888361045
+"migros bank","Mobile payment",11,4,0.0261282660332542
+"3db access ag","Mobile payment",10,5,0.0237529691211401
+"cyberunity ag","Online streaming",192,1,0.0830449826989619
+"seervision","Online streaming",71,2,0.0307093425605536
+"migros","Online streaming",41,3,0.0177335640138408
+"swissquote","Online streaming",35,4,0.0151384083044983
+"scandit","Online streaming",31,5,0.0134083044982699
+"dormakaba","Rfid tags",14,1,0.0362694300518135
+"smartliberty sa","Rfid tags",14,2,0.0362694300518135
+"expleo","Rfid tags",13,3,0.0336787564766839
+"modis","Rfid tags",12,4,0.0310880829015544
+"ic resources","Rfid tags",11,5,0.0284974093264249
+"kayak","Search Engine",72,1,0.0346987951807229
+"business leaders group ag","Search Engine",58,2,0.0279518072289157
+"apple","Search Engine",55,3,0.0265060240963855
+"webrepublic ag","Search Engine",37,4,0.0178313253012048
+"indeed","Search Engine",33,5,0.0159036144578313
+"login berufsbildung ag","Smart devices",464,1,0.0343169883884328
+"boost group ag","Smart devices",281,2,0.0207824865024776
+"die schweizerische post","Smart devices",211,3,0.015605354633533
+"postfinance","Smart devices",197,4,0.0145699282597441
+"avanade","Smart devices",169,5,0.0124990755121663
+"galliker transport ag","Social Networking",393,1,0.0134047342929258
+"awk group","Social Networking",326,2,0.0111194488027833
+"united nations","Social Networking",316,3,0.0107783614161948
+"merkle dach","Social Networking",275,4,0.00937990313118221
+"merkle","Social Networking",231,5,0.00787911863019305
+"decodio ag","Software defined radio",7,1,0.212121212121212
+"gloor&lang ag","Software defined radio",4,2,0.121212121212121
+"coop","Software defined radio",3,3,0.0909090909090909
+"hôpital du valais","Software defined radio",3,4,0.0909090909090909
+"gloor & lang","Software defined radio",2,5,0.0606060606060606
+"bouygues energies & services","Solar Power",405,1,0.100123609394314
+"agrola ag","Solar Power",91,2,0.0224969097651421
+"fachkraft","Solar Power",85,3,0.0210135970333745
+"dasteam ag","Solar Power",79,4,0.0195302843016069
+"elektrizitatswerke des kantons zurich","Solar Power",77,5,0.019035846724351
+"comet group","Touchscreen",9,1,0.1125
+"comet ag","Touchscreen",6,2,0.075
+"hirslanden klinik beau-site","Touchscreen",6,3,0.075
+"federation international de football association (fifa)","Touchscreen",3,4,0.0375
+"softproviding ag","Touchscreen",3,5,0.0375
+"facebook","Virtual Reality",358,1,0.144529672991522
+"netcetera","Virtual Reality",228,2,0.0920468308437626
+"scandit","Virtual Reality",132,3,0.0532902704884941
+"eth zurich","Virtual Reality",71,4,0.028663706096084
+"abb","Virtual Reality",60,5,0.0242228502220428
+"regus","Wifi",31,1,0.0210312075983718
+"iwg careers","Wifi",29,2,0.019674355495251
+"hotel belvedere grindelwald","Wifi",26,3,0.0176390773405699
+"moreno placements","Wifi",26,4,0.0176390773405699
+"intercontinental geneva hotel","Wifi",24,5,0.0162822252374491
+"apple","Wireless charging",7,1,0.175
+"renesas electronics","Wireless charging",7,2,0.175
+"renesas electronics corporation","Wireless charging",5,3,0.125
+"integrated device technology, inc.","Wireless charging",4,4,0.1
+"renesas electronics europe gmbh","Wireless charging",4,5,0.1
