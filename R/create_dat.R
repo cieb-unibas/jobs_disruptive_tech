@@ -21,13 +21,6 @@ print("Total number of postings by NUTS-2 region retrieved")
 nuts_bloom <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERIES[["bloom_nuts"]])
 print("Number of postings with connection to overall technologies from Bloom et al. (2021) by NUTS-2 region retrieved")
 
-# Number of postings in selected technologies from Bloom et al. (2021) by NUTS-2 region:
-TOP_FIELDS <- jpodRetrieve(jpod_conn = JPOD_CONN, 
-                           sql_statement = top_n_field_query(n = 4)) # retrieve largest 5 fields
-nuts_bloom_top <- jpodRetrieve(jpod_conn = JPOD_CONN, 
-                               sql_statement = nuts_selected_bloom_query(fields = TOP_FIELDS$field))
-print("Number of postings with connection to selected technologies from Bloom et al. (2021) by NUTS-2 region retrieved")
-
 # Companies with job postings having a connection to technologies from Bloom et al. (2021):
 company_postings <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERIES[["bloom_companies"]])
 company_postings <- company_postings %>% 
@@ -100,35 +93,33 @@ plot_df <- plot_df %>%
 write.csv(plot_df, "data/plot3_df.csv", row.names = FALSE)
 print("Data for Figure 3 saved.")
 
-# biggest companies per bloom field:
-top_companies <- company_postings %>%   
+# biggest companies in selected fields:
+company_postings %>%   
   filter(!company_name %in% AGENCIES) %>%
   group_by(bloom_field) %>%
   arrange(-bloom_postings) %>%
   mutate(rank = seq(n()), market_share = bloom_postings / sum(bloom_postings)) %>%
-  filter(rank <= 5) %>%
+  filter(rank <= 5 & bloom_field %in% c("Computer vision", "Wifi", "Search Engine", "Virtual Reality")) %>%
   arrange(bloom_field, rank) %>%
   select(-total)
-write.csv(top_companies, "data/top_emp.csv", row.names = FALSE)
-print("Data for top employers saved.")
-
-
-## tests:
-# # firm <- 'meag munich ergo assetmanagement gmbh'
-# # firm <- 'login berufsbildung ag'
-# # firm <- 'bouygues energies & services'
-# firm <- 'galliker transport ag'
-# # firm <- 'facebook'
-# JPOD_QUERY <- paste0("
-# SELECT jp.job_description
-# --SELECT COUNT(*) AS total_postings, COUNT(DISTINCT(jp.job_description)) AS n_unique
-# FROM job_postings jp
-# WHERE jp.uniq_id IN (
-#   SELECT uniq_id 
-#   FROM position_characteristics 
-#   WHERE company_name == '", firm, "'
-#   ) 
-# LIMIT 2
-# ")
-# jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERY)
-
+# company_name                  bloom_field     bloom_postings  rank market_share
+# facebook                      Computer vision            346     1       0.121 
+# scandit                       Computer vision            133     2       0.0464
+# apple                         Computer vision            131     3       0.0457
+# advertima ag                  Computer vision             70     4       0.0244
+# eth zurich                    Computer vision             52     5       0.0181
+# kayak                         Search Engine               72     1       0.0347
+# business leaders group ag     Search Engine               58     2       0.0280
+# apple                         Search Engine               55     3       0.0265
+# webrepublic ag                Search Engine               37     4       0.0178
+# indeed                        Search Engine               33     5       0.0159
+# facebook                      Virtual Reality            358     1       0.145 
+# netcetera                     Virtual Reality            228     2       0.0920
+# scandit                       Virtual Reality            132     3       0.0533
+# eth zurich                    Virtual Reality             71     4       0.0287
+# abb                           Virtual Reality             60     5       0.0242
+# regus                         Wifi                        31     1       0.0210
+# iwg careers                   Wifi                        29     2       0.0197
+# hotel belvedere grindelwald   Wifi                        26     3       0.0176
+# moreno placements             Wifi                        26     4       0.0176
+# intercontinental geneva hotel Wifi                        24     5       0.0163
