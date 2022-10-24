@@ -1,18 +1,4 @@
 "nuts_2","Grossregion","total_postings","bloom_postings","bloom_field","regio_bloom_share","ch_bloom_share"
-"CH04","zurich",899521,34501,"Cloud computing",0.0383548577520703,NA
-"CH07","ticino",32706,1053,"Cloud computing",0.0321959273527793,NA
-"CH01","région lemanique",334350,9647,"Cloud computing",0.0288529983550172,NA
-"CH02","espace mittelland",569824,7372,"Cloud computing",0.0129373280170719,NA
-"CH03","northwestern switzerland",433964,5609,"Cloud computing",0.0129250352563807,NA
-"CH06","central switzerland",373018,3573,"Cloud computing",0.00957862623251425,NA
-"CH05","eastern switzerland",357430,1751,"Cloud computing",0.00489886131550234,NA
-"CH04","zurich",899521,18658,"Machine Learning AI",0.0207421505445676,NA
-"CH07","ticino",32706,601,"Machine Learning AI",0.0183758331804562,NA
-"CH01","région lemanique",334350,4582,"Machine Learning AI",0.0137042021833408,NA
-"CH03","northwestern switzerland",433964,2928,"Machine Learning AI",0.00674710344636882,NA
-"CH06","central switzerland",373018,1962,"Machine Learning AI",0.00525979979518415,NA
-"CH02","espace mittelland",569824,2386,"Machine Learning AI",0.00418725781995844,NA
-"CH05","eastern switzerland",357430,635,"Machine Learning AI",0.00177657163640433,NA
 "CH04","zurich",899521,87922,"overall",0.0977431321781259,0.436244374649578
 "CH07","ticino",32706,2884,"overall",0.0881795389225219,0.0143096014250061
 NA,NA,210406,16344,"overall",0.0776783932017148,0.0810943570354713
@@ -21,17 +7,3 @@ NA,NA,210406,16344,"overall",0.0776783932017148,0.0810943570354713
 "CH06","central switzerland",373018,16559,"overall",0.0443919596373365,0.0821611269059208
 "CH02","espace mittelland",569824,23413,"overall",0.0410881254562812,0.116168758031785
 "CH05","eastern switzerland",357430,9587,"overall",0.0268220350837926,0.0475680127813916
-"CH07","ticino",32706,420,"Smart devices",0.01284168042561,NA
-"CH04","zurich",899521,9001,"Smart devices",0.0100064367591196,NA
-"CH03","northwestern switzerland",433964,3245,"Smart devices",0.00747757878533703,NA
-"CH02","espace mittelland",569824,4108,"Smart devices",0.00720924355590498,NA
-"CH01","région lemanique",334350,2073,"Smart devices",0.00620008972633468,NA
-"CH05","eastern switzerland",357430,1799,"Smart devices",0.00503315334471085,NA
-"CH06","central switzerland",373018,1867,"Smart devices",0.00500512039633476,NA
-"CH04","zurich",899521,20904,"Social Networking",0.0232390349975153,NA
-"CH07","ticino",32706,745,"Social Networking",0.0227786950406653,NA
-"CH01","région lemanique",334350,7145,"Social Networking",0.0213698220427696,NA
-"CH06","central switzerland",373018,7327,"Social Networking",0.019642483740731,NA
-"CH03","northwestern switzerland",433964,5979,"Social Networking",0.0137776405416117,NA
-"CH02","espace mittelland",569824,5814,"Social Networking",0.0102031504464536,NA
-"CH05","eastern switzerland",357430,2877,"Social Networking",0.00804912850068545,NA

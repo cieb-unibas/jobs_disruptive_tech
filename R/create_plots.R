@@ -34,7 +34,7 @@ ggplot(data = plot_df)+
                      labels = scales::percent) +
   theme_void() +
   theme(legend.position = "right")
-#ggsave("img/plot_1.png")
+ggsave("img/plot_1.png")
 
 #### Figure 2: Spread of Disruptive Technologies Across Employers in CH---------
 plot_df <- read.csv("data/plot2_df.csv")
@@ -52,7 +52,7 @@ ggplot(data = plot_df,
         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
         axis.line = element_line(),
         axis.title = element_text(face="bold",size=10))
-# ggsave("img/plot_2.png")
+ggsave("img/plot_2.png")
 
 
 #### Figure 3: Figure 3: Concentration of Job Postings Among Employers----------
@@ -70,5 +70,5 @@ ggplot(data = plot_df,
         panel.grid.major.y = element_line(linetype = "dotted", color = "grey"),
         axis.line = element_line(),
         axis.title = element_text(face="bold",size=10))
-# ggsave("img/plot_3.png")
+ggsave("img/plot_3.png")
 

@@ -21,80 +21,66 @@ print("Total number of postings by NUTS-2 region retrieved")
 nuts_bloom <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERIES[["bloom_nuts"]])
 print("Number of postings with connection to overall technologies from Bloom et al. (2021) by NUTS-2 region retrieved")
 
-# Companies with job postings having a connection to technologies from Bloom et al. (2021):
-company_postings <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERIES[["bloom_companies"]])
-company_postings <- company_postings %>% 
+# Employers with job postings having a connection to technologies from Bloom et al. (2021):
+employer_postings <- jpodRetrieve(jpod_conn = JPOD_CONN, sql_statement = JPOD_QUERIES[["bloom_companies"]])
+employer_postings <- employer_postings %>% 
   group_by(bloom_field) %>% 
   mutate(total = sum(bloom_postings))
-print("Companies with job postings having a connection to technologies from Bloom et al. (2021) retrieved")
+print("Employers with job postings having a connection to technologies from Bloom et al. (2021) retrieved")
+
+# Total number of employers with job postings in the database
+n_employers <- jpodRetrieve(
+  jpod_conn = JPOD_CONN,
+  sql_statement = "SELECT COUNT(*) as n_employers FROM institutions"
+  )
+AGENCIES <- c("rocken", "myitjob", "yellowshark", 
+              "adecco", "randstad", "michael page",
+              "digital minds", "personal sigma",
+              "manpower", "tiger")
+n_employers <- n_employers$n_employers - length(AGENCIES) # 76'926
+print("Total number of employers retrieved.")
 
 #### Data for Figure 1 -----------------------------------------------------
-# regional specialization in overall fields:
 map_df <- merge(nuts_total, nuts_bloom, by = c("nuts_2", "Grossregion"))
 map_df <- map_df %>%
     mutate(bloom_field = "overall",
            regio_bloom_share = bloom_postings / total_postings,
            ch_bloom_share = bloom_postings / sum(bloom_postings)) %>%
     arrange(-regio_bloom_share)
-# regional specialization in selected fields:
-nuts_bloom_top <- nuts_bloom_top %>%
-  left_join(nuts_total, by = c("nuts_2")) %>%
-  mutate(regio_bloom_share = bloom_postings / total_postings,
-         ch_bloom_share = NA) %>%
-  arrange(-regio_bloom_share)
-map_df <- rbind(map_df, nuts_bloom_top[, names(map_df)]) %>% arrange(bloom_field, -regio_bloom_share)
 write.csv(map_df, "data/plot1_df.csv", row.names = FALSE)
 print("Data Figure 1 saved.")
 
 #### Data for Figure 2 -----------------------------------------------------
-AGENCIES <- c("rocken", "myitjob", "yellowshark", 
-              "adecco", "randstad", "michael page",
-              "digital minds", "personal sigma",
-              "manpower", "tiger"
-              )
-n_companies <- jpodRetrieve(jpod_conn = JPOD_CONN, 
-                            sql_statement = "SELECT COUNT(*) as n_companies FROM institutions")
-n_companies <- n_companies$n_companies - length(AGENCIES) # 76'926
-
-plot_df <- company_postings %>%
+plot_df <- employer_postings %>%
   filter(!company_name %in% AGENCIES) %>% # exclude agencies
   group_by(bloom_field) %>% 
   summarise(n_institutions = n(),
-            share_total = n_institutions / n_companies) %>%
+            share_total = n_institutions / n_employers) %>%
   filter(n_institutions >= 50) %>% 
   mutate(share_total_normed = share_total / mean(share_total))
 write.csv(plot_df, "data/plot2_df.csv", row.names = FALSE)
 print("Data for Figure 2 saved.")
 
 #### Data for Figure 3 -----------------------------------------------------
-AGENCIES <- c("rocken", "myitjob", "yellowshark", 
-              "adecco", "randstad", "michael page",
-              "digital minds", "personal sigma",
-              "manpower", "tiger"
-              )
-n_companies <- jpodRetrieve(jpod_conn = JPOD_CONN, 
-                            sql_statement = "SELECT COUNT(*) as n_companies FROM institutions")
-n_companies <- n_companies$n_companies - length(AGENCIES)
-
-plot_df <- company_postings %>% 
+plot_df <- employer_postings %>% 
   filter(!company_name %in% AGENCIES) %>%
   group_by(bloom_field) %>%
   mutate(market_share = bloom_postings / sum(bloom_postings))
-
 plot_df <- plot_df %>%
   mutate(market_share_sqrd = market_share^2) %>%
   group_by(bloom_field) %>%
   summarise(hhi = sum(market_share_sqrd), 
             companies = n()) %>%
-  mutate(company_share = companies / n_companies) %>%
+  mutate(company_share = companies / n_employers) %>%
   arrange(-company_share) %>%
   head(10) %>% # only top-ten
   mutate(hhi_normed = hhi / mean(hhi))
 write.csv(plot_df, "data/plot3_df.csv", row.names = FALSE)
 print("Data for Figure 3 saved.")
 
-# biggest companies in selected fields:
-company_postings %>%   
+#### Text examples: -----------------------------------------------------
+# biggest companies in example fields:
+employer_postings %>%   
   filter(!company_name %in% AGENCIES) %>%
   group_by(bloom_field) %>%
   arrange(-bloom_postings) %>%
