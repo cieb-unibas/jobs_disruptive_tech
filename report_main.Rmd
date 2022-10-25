@@ -10,7 +10,9 @@ output:
     highlight: null
     mathjax: null
 ---
+
 <head>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71167447-1"></script>
 
 <script>
@@ -22,15 +24,13 @@ output:
 
 <div class="container-fluid main-container">
 
-<meta property='og:title' content='Innoscape.ch | Spreading Out: The Adoption of Disruptive Technologies in Switzerland'/>
-<meta property='og:image' content='To what extent have disruptive technologies spread to Switzerland?'/>
-<meta property='og:url' content='https://innoscape.ch/en/publications/jobs_disruptive_tech'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles/css_style.css" type="text/css" />
+
 </head>
-
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-# Load packages
-```
 
 <!-- START with text -->
 ### **Spreading Out: The Adoption of Disruptive Technologies in Switzerland**
@@ -61,7 +61,6 @@ Follow us on social media &nbsp;&nbsp;
 <!-- TITLE PICTURE -->
 ![](img/title_picture.jpg){width=100%}
 <a href="https://www.flickr.com/photos/peterscherub/25876043386/in/photolist-Fqzuc5-3t24Mi-dy6dcJ-2jhZg6w-2kiN8t5-2jdd6kB-2jpz9an-qWUEi-42hTw-96TPNF-6ra2g5-2narGBf-2hyQr52-2hGR6Tg-KumRk2-86xCaj-36xb8r-JXYV8B-2hBSwbM-fpjCmm-Z7SqRL-4VGA3p-efrWCg-eudzj6-eaJkQT-8zYqr-MZYMZ-6dSQBq-EqeziL-7M77cV-2jkA9J6-6dNGm8-o31ZEr-cXvKfG-N1SdSj-4ypy7y-516fT-8J74Bo-aFGjS-6nDDBq-4bQVSd-ov8zFH-37hMGL-2nfqLiC-3QphCL-5rsXD-KWGse-cqhNc-6atJkL-2fnoCam" target="_blank">Flickr | Judy Dean</a>
-<!-- <a href="https://www.flickr.com/photos/genista/86283540/in/photolist-8Ce6f-83rDQo-fcSjgR-5EJjKM-hWWfrE-TjKPhm-cb5ZG-83oAxe-83oAdt-bCoZrd-8vwmtf-bUHTWa-oVv2n1-NpEk3-4T4jkd-voDbE-9TJ5RD-a4aE9c-2mjws8y-dCjqYj-eQin8e-83owXV-5zDZx8-8UvNaM-5zJrij-4T4jwE-bC15vo-6utwjq-c38qMG-SdV3BE-eQuLnJ-9Rchh3-9R9omF-9Dy2X3-Hbrxfw-en4KLF-6vGRDj-91WmfY-BYy1M-6pymgg-5a1RoJ-d2Bem-bQULmV-4SwBCP-d2BcP-7KL6W4-nE86Xx-chfar3-6vGRG7-6pykR4" target="_blank">Flickr | Kai Schreiber</a> -->
 
 <br>
 
@@ -73,6 +72,7 @@ In a recent study, <a href=https://www.nber.org/papers/w28999 target = “_blank
 
 To what extent have disruptive technologies spread in Switzerland? Data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a> on over 3 million Swiss job postings over the last 2 years allows us to approach this question.  We assign job postings to disruptive technologies if their full text contains keywords as defined by Bloom et al. (2021). This provides an estimate of how prevalent these technologies are in Switzerland.
 
+
 <!-- METHODOLOGY BOX / LINK TO PAPER -->
 <details>
 <summary>*Click here to get a more information on the data.*</summary>
@@ -80,9 +80,15 @@ To what extent have disruptive technologies spread in Switzerland? Data from <a 
 The sample of job postings we use for this analysis is obtained from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a> and consists of over 3 million Swiss job postings published by nearly 77 thousand employers. We assign job postings to so-called *Grossregionen* (which correspond to <a href="https://ec.europa.eu/eurostat/web/regions/background" target ="blank"> Eurostat NUTS-2 regions</a>), according to information about the location of the position described in the job posting provided by JobsPickr (e.g., canton or cities). 
 
 We then check if job postings mention technological keywords defined by <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom, Hassan, Kalyani, Lerner & Tahoun (2021)</a> in their full text. To do so, we first translate all technological keywords to German, French, and Italian using Google translate and look for matches with the English keywords (e.g., “additive manufactur”) or the translations (e.g, “additive fertigung”, “fabrication additive”, “produzione di additive”). If a keyword is mentioned in a particular job posting (e.g., “additive fertigung”), we assign the job posting to the corresponding technology (e.g., 3d Printing).
+<hr>
+<br>
 </details>
 
+<br>
+
 Overall, we detect slightly over 200’000 postings with a connection to the 29 disruptive technologies from Bloom et al. (2021) in our sample (i.e., around 6% of all postings). It is noteworthy that these postings are not distributed proportionally across Swiss regions in our sample but are geographically clustered. This suggests that disruptive technologies are more prevalent in some regions compared to others. 
+
+<br>
 
 <hr class="hr_red">
 #### **Figure 1: Regional Specialization in Disruptive Technologies**
@@ -90,6 +96,8 @@ Overall, we detect slightly over 200’000 postings with a connection to the 29 
 knitr::include_graphics("img/plot_1.png")
 ```
 <span style="font-size:0.8em">*Sources and notes: Estimated share of job postings with a connection to disruptive technologies as defined in <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a> among all job postings of a region. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. Data to replicate the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
+
+<br>
 
 <!-- HIGHLIGHT -->
 <div class=bloc_div>
@@ -100,6 +108,8 @@ Figure 1 illustrates the aforementioned pattern. According to our data sample, t
 
 But how prevalent are specific technologies across the almost 77 thousand Swiss employers in our sample? What share of these employers mentions a given technology? Consider, for example, “Cloud Computing”. Almost 4400 employers mention it in at least one of their job postings, corresponding to a share of almost 6%. To evaluate the diffusion of all other disruptive technologies as well, we identically calculate employer-shares for the other technology fields. Figure 2 depicts the results for all technology fields where we detected at least 50 employers with job postings related to that technology.
 
+<br>
+
 <hr class="hr_red">
 #### **Figure 2: Technology Diffusion Across Employers**
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -107,9 +117,13 @@ knitr::include_graphics("img/plot_2.png")
 ```
 <span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a>. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. Data to replicate the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
 
+<br>
+
 The average share across technology fields is 1.6%, but several disruptive technologies, such as Electronic Gaming or Autonomous Cars, are only slightly represented among the companies with job postings in our sample. Hence, the average share is heavily driven by the four most prevalent technologies “Machine Learning & AI”, “Smart Devices”, “Cloud Computing” and, most of all, “Social Networking”. Job postings with a connection to social networks make up over 8% of all job postings in our sample – a more than 5 times higher share than the average across all disruptive technologies. This likely reflects how widespread social media and professions such as Social Media Managers have become. 
 
 For other technologies, it is not intuitively clear how widespread they have become though. For example, technologies such as Computer Vision, Search Engine, Wifi and Virtual Reality have similar, yet below-average shares of employers with job postings related to these technologies in our sample. But it could be, that some of them are much more heavily dominated by a few big employers than others. Using the so-called <a href= https://en.wikipedia.org/wiki/Herfindahl%E2%80%93Hirschman_index target = “_blank”> Herfindahl-Hirschmann index</a> measure as a proxy, Figure 3 illustrates the concentration of job postings among employers within the ten most prevalent disruptive technologies (note that we exclude postings published by recruiting companies such as Adecco or Randstad).
+
+<br>
 
 <hr class="hr_red">
 #### **Figure 3: Concentration of Job Postings Among Employers**
@@ -118,19 +132,11 @@ knitr::include_graphics("img/plot_3.png")
 ```
 <span style="font-size:0.8em">*Sources and notes: Estimated number of companies publishing job postings associated with disruptive technologies from <a href=https://www.nber.org/papers/w28999 target = “_blank”> Bloom et al. (2021)</a>. Own estimations of the <a href="https://www.cieb.unibas.ch" target ="blank">CIEB</a> using job postings data from <a href="https://www.jobspikr.com/" target ="blank">JobsPikr</a>. Data to replicate the plot is available on <a href="https://github.com/cieb-unibas/jobs_disruptive_tech" target ="blank">Github</a>.*</span>
 
+<br>
+
 As expected, technologies that are more prevalent across employers, are also less dominated by a few big players. However, interesting differences emerge, for example, between the aforementioned technologies Computer Vision, Wifi, Search Engine and Virtual Reality Technologies. Whereas Virtual Reality and Computer Vision showed a similar prevalence as the other two technologies in Figure 2, job postings related to Virtual Reality are clearly the most concentrated across all fields. Its postings are about 7 times as concentrated among employers compared to Search Engine and Wifi technologies, and about 1.5 times as concentrated compared to Computer Vision. Consequently, the share of jobs that are offered by the largest employers in the fields of Search Engine and Wifi technologies (e.g., Kayak, a travel search engine or Regus, an office space service company) are much smaller compared to those in Virtual Reality and Computer Vision. This is because according to our sample, there are only a few employers present in these fields. Prominent ones include the two big tech companies Meta and Apple, as well as the ETH Zurich representing academia (see also, <a href= https://www.linkedin.com/feed/update/urn:li:activity:6945992073892270080/ target = “_blank”> this short overview</a> regarding the prospects of virtual reality in Switzerland). Lesser known but also significant employers include the companies Advertima, Scandit or Netcetera. 
 
 At the other end of the spectrum, job postings seem to be a lot more dispersed across several employers for Cloud Computing (e.g., Swisscom, SAP, Atos, Salesforce) and Machine Learning (e.g., ETH Zürich, UBS, Facebook, Roche) technologies. Since these technologies are expected to further evolve and are sometimes labeled as <a href= https://en.wikipedia.org/wiki/General-purpose_technology target = “_blank”>General Purpose Technologies</a>, their relatively substantial spread across several employers to date can be understood as an encouraging sign for the future prospect of the Swiss economy. 
-
-<br>
-<hr class="hr_red">
-<p style="text-align: left; line-height: 150%;">
-#### **Did you like this article?**
-Share it with your friends and colleagues on Social Media
-<a href='https://twitter.com/cieb_unibas/status/1472942555713126403' class="fa fa-twitter" style='color:black;text-decoration: none; font-size:28px;' target='_blank'></a> 
- &nbsp; &nbsp;
- <a href='https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com/feed/update/urn:li:activity:6878708066284662784/' class="fa fa-linkedin" style='color:black;text-decoration: none; font-size:28px;' target='_blank'></a> 
- </p>
 
 <!-- TEASER OTHER OUTPUTS -->
 <br class='br_mobile'>
@@ -146,7 +152,7 @@ Share it with your friends and colleagues on Social Media
 
 <br>
 
-<!-- SOCIAL MEDIA CHANNELS -->
+<!-- JS-function for ToolTip -->
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();   
